@@ -36,6 +36,20 @@ INSTALLED_APPS = [
     'django.contrib.messages',
     'django.contrib.staticfiles',
 
+    'allauth',
+    'allauth.account',
+    # Необязательно -- Требуется установка с помощью `django-allauth [socialaccount]`.
+    'allauth.socialaccount',
+    # Включите поставщиков, которых вы хотите включить:
+    'allauth.socialaccount.providers.github',
+    'allauth.socialaccount.providers.gitlab',
+    'allauth.socialaccount.providers.mailru',
+    'allauth.socialaccount.providers.odnoklassniki',
+    'allauth.socialaccount.providers.telegram',
+    'allauth.socialaccount.providers.vk',
+    'allauth.socialaccount.providers.yandex',
+
+    # приложения проекта
     'new.apps.NewConfig',
 ]
 
@@ -47,6 +61,9 @@ MIDDLEWARE = [
     'django.contrib.auth.middleware.AuthenticationMiddleware',
     'django.contrib.messages.middleware.MessageMiddleware',
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
+
+    # промежуточное программное обеспечение учетной записи:
+    "allauth.account.middleware.AccountMiddleware",
 ]
 
 ROOT_URLCONF = 'another_one.urls'
@@ -61,6 +78,9 @@ TEMPLATES = [
                 'django.template.context_processors.request',
                 'django.contrib.auth.context_processors.auth',
                 'django.contrib.messages.context_processors.messages',
+
+                # это нужно "allauth" от Django (добавляет "allauth" в контекст запроса)
+                'django.template.context_processors.request',
             ],
         },
     },
@@ -121,3 +141,12 @@ STATICFILES_DIRS = [
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
 
 AUTH_USER_MODEL = 'new.MyUser'
+
+# аутентификация от "AllAuth"
+AUTHENTICATION_BACKENDS = [
+    # вход в систему по имени пользователя в администраторе Django, независимо от `allauth`
+    'django.contrib.auth.backends.ModelBackend',
+
+    # Специфические методы аутентификации "Allauth", такие, как логин по электронной почте
+    'allauth.account.auth_backends.AuthenticationBackend',
+]
