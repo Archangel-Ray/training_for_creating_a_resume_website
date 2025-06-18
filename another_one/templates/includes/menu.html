@@ -1,0 +1,13 @@
+<a href="/"><div class="menu_item">навыки</div></a>
+<a href="/"><div class="menu_item">портфолио</div></a>
+<a href="/"><div class="menu_item">образование</div></a>
+<a href="/"><div class="menu_item">сертификаты</div></a>
+{% if user.is_authenticated %}
+<a href="/accounts/">
+	<div class="menu_item menu_item_accounts">Вы вошли под именем: <p>{{user}}</p></div>
+</a>
+{% else %}
+<a href="/accounts/">
+	<div class="menu_item menu_item_accounts">Войти в личный кабинет</div>
+</a>
+{% endif %}
