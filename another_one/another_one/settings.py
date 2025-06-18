@@ -142,6 +142,9 @@ DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
 
 AUTH_USER_MODEL = 'new.MyUser'
 
+LOGIN_URL = "/accounts/login/"
+LOGIN_REDIRECT_URL = "/accounts/"
+
 # аутентификация от "AllAuth"
 AUTHENTICATION_BACKENDS = [
     # вход в систему по имени пользователя в администраторе Django, независимо от `allauth`
