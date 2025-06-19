@@ -10,5 +10,9 @@ class City(models.Model):
     name = models.CharField(max_length=100)
 
 
+class Profession(models.Model):
+    name = models.CharField(max_length=100)
+
+
 class MyUser(AbstractUser):
     pass
