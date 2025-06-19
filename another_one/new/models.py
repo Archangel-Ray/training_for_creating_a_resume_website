@@ -6,5 +6,9 @@ class CountryOfConsignment(models.Model):
     name = models.CharField(max_length=100)
 
 
+class City(models.Model):
+    name = models.CharField(max_length=100)
+
+
 class MyUser(AbstractUser):
     pass
