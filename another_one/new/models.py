@@ -4,6 +4,7 @@ from django.db import models
 
 class CountryOfConsignment(models.Model):
     name = models.CharField(max_length=100)
+    state_flag = models.ImageField("Государственный флаг", upload_to="images/flag/", null=True, blank=True)
 
 
 class City(models.Model):
