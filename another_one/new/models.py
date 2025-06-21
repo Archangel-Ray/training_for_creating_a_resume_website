@@ -16,7 +16,7 @@ class Profession(models.Model):
 
 class Organization(models.Model):
     name = models.CharField(max_length=100)
-    city = models.OneToOneField(City, on_delete=models.SET_NULL, null=True, blank=True)
+    city = models.ForeignKey(City, on_delete=models.SET_NULL, null=True, blank=True)
 
 
 class MyUser(AbstractUser):
