@@ -91,5 +91,5 @@ class MyUser(AbstractUser):
         blank=True,
         verbose_name="Текущее место работы",
     )
-    motto = models.CharField(max_length=1000, verbose_name="Мой девиз")
-    about_me = models.TextField("Обо мне")
+    motto = models.CharField(max_length=1000, verbose_name="Мой девиз", null=True, blank=True)
+    about_me = models.TextField(verbose_name="Обо мне", null=True, blank=True)
