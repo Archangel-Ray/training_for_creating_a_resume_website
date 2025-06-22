@@ -54,13 +54,13 @@ class Organization(models.Model):
 
 class MyUser(AbstractUser):
     PROFESSIONAL_LEVELS = {
-        1: "ученик",
-        2: "начинающий",
-        3: "небольшой опыт",
-        4: "опыт есть",
-        5: "профессионал",
-        6: "супер-профессионал",
-        7: "хобби",
+        "LR": "ученик",
+        "BR": "начинающий",
+        "LL": "небольшой опыт",
+        "EX": "опыт есть",
+        "PR": "профессионал",
+        "SP": "супер-профессионал",
+        "HB": "хобби",
     }
 
     photo = models.ImageField(
@@ -78,7 +78,7 @@ class MyUser(AbstractUser):
         Profession, on_delete=models.SET_NULL, null=True, blank=True, verbose_name="Профессия"
     )
     the_level_of_professionalism = models.CharField(
-        max_length=1,
+        max_length=2,
         choices=PROFESSIONAL_LEVELS,
         null=True,
         blank=True,
