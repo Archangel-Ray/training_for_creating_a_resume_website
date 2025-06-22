@@ -3,7 +3,7 @@ from django.db import models
 
 
 class CountryOfConsignment(models.Model):
-    name = models.CharField(max_length=100, unique=True)
+    name = models.CharField(max_length=100, unique=True, verbose_name="Название")
     state_flag = models.ImageField("Государственный флаг", upload_to="flag/", null=True, blank=True)
 
     class Meta:
@@ -16,7 +16,7 @@ class CountryOfConsignment(models.Model):
 
 
 class City(models.Model):
-    name = models.CharField(max_length=100, unique=True)
+    name = models.CharField(max_length=100, unique=True, verbose_name="Название")
 
     class Meta:
         ordering = ["name"]
@@ -28,7 +28,7 @@ class City(models.Model):
 
 
 class Profession(models.Model):
-    name = models.CharField(max_length=100, unique=True)
+    name = models.CharField(max_length=100, unique=True, verbose_name="Название")
 
     class Meta:
         ordering = ["name"]
@@ -40,8 +40,8 @@ class Profession(models.Model):
 
 
 class Organization(models.Model):
-    name = models.CharField(max_length=100, unique=True)
-    city = models.ForeignKey(City, on_delete=models.SET_NULL, null=True, blank=True)
+    name = models.CharField(max_length=100, unique=True, verbose_name="Название")
+    city = models.ForeignKey(City, on_delete=models.SET_NULL, null=True, blank=True, verbose_name="Город")
 
     class Meta:
         ordering = ["name"]
