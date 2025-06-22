@@ -53,4 +53,43 @@ class Organization(models.Model):
 
 
 class MyUser(AbstractUser):
-    pass
+    PROFESSIONAL_LEVELS = {
+        1: "ученик",
+        2: "начинающий",
+        3: "небольшой опыт",
+        4: "опыт есть",
+        5: "профессионал",
+        6: "супер-профессионал",
+        7: "хобби",
+    }
+
+    photo = models.ImageField(
+        "Собственное изображение",
+        upload_to="user_s_photo/",
+        null=True,
+        blank=True,
+    )
+    birthday = models.DateField(null=True, blank=True, verbose_name="День рождения")
+    citizenship = models.ForeignKey(
+        CountryOfConsignment, on_delete=models.SET_NULL, null=True, blank=True, verbose_name="Гражданство"
+    )
+    city = models.ForeignKey(City, on_delete=models.SET_NULL, null=True, blank=True, verbose_name="Город")
+    profession = models.ForeignKey(
+        Profession, on_delete=models.SET_NULL, null=True, blank=True, verbose_name="Профессия"
+    )
+    the_level_of_professionalism = models.CharField(
+        max_length=1,
+        choices=PROFESSIONAL_LEVELS,
+        null=True,
+        blank=True,
+        verbose_name="Уровень профессионализма",
+    )
+    job = models.ForeignKey(
+        Organization,
+        on_delete=models.SET_NULL,
+        null=True,
+        blank=True,
+        verbose_name="Текущее место работы",
+    )
+    motto = models.CharField(max_length=1000, verbose_name="Мой девиз")
+    about_me = models.TextField("Обо мне")
