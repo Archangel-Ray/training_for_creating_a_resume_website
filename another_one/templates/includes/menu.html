@@ -3,6 +3,7 @@
 <a href="/"><div class="menu_item">образование</div></a>
 <a href="/"><div class="menu_item">сертификаты</div></a>
 {% if user.is_authenticated %}
+<p>Личный кабинет:</p>
 <a href="/accounts/">
 	<div class="menu_item menu_item_accounts">Вы вошли под именем: <p>{{user}}</p></div>
 </a>
