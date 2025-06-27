@@ -63,11 +63,23 @@ class MyUser(AbstractUser):
         "HB": "хобби",
     }
 
+    BIOLOGICAL_SEX = {
+        "F": "женский",
+        "M": "мужской"
+    }
+
     photo = models.ImageField(
         "Собственное изображение",
         upload_to="user_s_photo/",
         null=True,
         blank=True,
+    )
+    biological_sex = models.CharField(
+        max_length=1,
+        choices=BIOLOGICAL_SEX,
+        null=True,
+        blank=True,
+        verbose_name="Пол",
     )
     birthday = models.DateField(null=True, blank=True, verbose_name="День рождения")
     citizenship = models.ForeignKey(
