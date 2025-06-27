@@ -1,0 +1,41 @@
+.menu {
+    position: sticky;
+    top: 0;
+    height: 100%;
+    flex: 150px 0;
+    text-align: left;
+    margin: 0 15px;
+}
+
+
+.menu a {
+    text-decoration: none;
+}
+
+.menu > p {
+    text-align: left;
+    margin-top: 50px;
+    margin-bottom: 0;
+}
+
+.menu_item {
+    background-color: white;
+    padding: 10px;
+    margin-bottom: 15px;
+    color: darkgreen;
+}
+
+.menu_item:hover {
+    background-color: darkgreen;
+    color: white;
+}
+
+.menu_item_accounts {
+    border-top: 1px solid black;
+    font-size: 0.8em;
+}
+
+.menu_item_accounts > p {
+    font-size: 1.1em;
+    text-align: right;
+}
