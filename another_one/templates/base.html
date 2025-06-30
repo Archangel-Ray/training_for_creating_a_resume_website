@@ -17,9 +17,16 @@
         <div class="basic_inf">
             {% block body %}{% endblock %}
         </div>
-        <div class="footer">{% include 'includes/footer.html' %}</div>
     </div>
-    <div class="menu">{% include 'includes/menu.html' %}</div>
+    <div class="right_bar">
+        {% if "data" not in request.path %}
+            <div class="main_info">{% include 'new/main_info.html' %}</div>
+        {% else %}
+            <div class="main_info">{% include 'new/main_info.html' with myuser=i_am %}</div>
+        {% endif %}
+        <div class="menu">{% include 'includes/menu.html' %}</div>
+    </div>
 </div>
+<div class="footer">{% include 'includes/footer.html' %}</div>
 </body>
 </html>
