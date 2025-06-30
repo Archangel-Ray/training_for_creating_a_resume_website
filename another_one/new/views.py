@@ -11,3 +11,10 @@ def main(request):
 class Individual(DetailView):
     model = MyUser
     template_name = "new/individual_information.html"
+
+
+def skills(request):
+    context = {
+        "i_am": MyUser.objects.get(id=1),
+    }
+    return render(request, 'new/display_data.html', context=context)
