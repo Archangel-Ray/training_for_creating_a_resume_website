@@ -1,10 +1,15 @@
-<a href="/"><div class="menu_item">навыки</div></a>
-<a href="/"><div class="menu_item">портфолио</div></a>
-<a href="/"><div class="menu_item">образование</div></a>
-<a href="/"><div class="menu_item">сертификаты</div></a>
+{% if "/1" not in request.path %}
+	<a href="/1"><div class="menu_item">к резюме Сергея</div></a>
+{% else %}
+	<a href="{% url 'отобразить навыки' %}"><div class="menu_item">навыки</div></a>
+	<a href="{% url 'отобразить навыки' %}"><div class="menu_item">портфолио</div></a>
+	<a href="{% url 'отобразить навыки' %}"><div class="menu_item">образование</div></a>
+	<a href="{% url 'отобразить навыки' %}"><div class="menu_item">сертификаты</div></a>
+{% endif %}
+
 {% if user.is_authenticated %}
 <p>Личный кабинет:</p>
-<a href="/accounts/">
+<a href="{% url 'отобразить личные данные' user.id %}">
 	<div class="menu_item menu_item_accounts">Вы вошли под именем: <p>{{user}}</p></div>
 </a>
 {% else %}
