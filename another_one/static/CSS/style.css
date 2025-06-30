@@ -41,6 +41,12 @@ p {
 }
 
 .additional_menu {
+    display: flex;
+    justify-content: space-between;
+}
+
+.additional_menu a {
+    text-decoration: none;
 }
 
 .footer {
