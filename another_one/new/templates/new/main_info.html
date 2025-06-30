@@ -1,0 +1,33 @@
+{% load static %}
+
+{% if myuser %}
+	{% if myuser.photo %}
+		<a href="/{{ myuser.id }}">
+			<img
+					src="{% static ''|add:myuser.photo.url %}"
+					alt="Личная фотография"
+					width="200"
+			>
+		</a>
+	{% else %}
+		<img
+			src="{% static 'images/user_s_photo/default.jpg' %}"
+			alt="Фото по умолчанию"
+			width="200"
+		>
+	{% endif %}
+	<div class="motto">
+		{% if myuser.motto %}
+			{{ myuser.motto }}
+		{% else %}
+			у пользователя нет девиза
+		{% endif %}
+	</div>
+	<p>{% if myuser.citizenship %}{{ myuser.citizenship }}{% endif %}</p>
+	<p>{% if myuser.city %}{{ myuser.city }}{% endif %}</p>
+	<p>{% if myuser.birthday %}{{ myuser.birthday }}{% endif %}</p>
+	<p>{% if myuser.get_biological_sex_display %}{{ myuser.get_biological_sex_display }}{% endif %}</p>
+	<p>{% if myuser.get_the_level_of_professionalism_display %}{{ myuser.get_the_level_of_professionalism_display }}{% endif %}</p>
+	<p>{% if myuser.job %}{{ myuser.job }}{% endif %}</p>
+	<hr>
+{% endif %}
