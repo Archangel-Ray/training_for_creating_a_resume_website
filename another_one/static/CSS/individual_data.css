@@ -1,18 +1,47 @@
 .right_bar {
     position: sticky;
     top: 0;
-    flex: 0 200px;
+    flex: 0 220px;
 }
 
 .motto {
     padding: 0 3px;
     text-align: center;
-    font-size: 0.9em;
+    font-size: 1.03em;
     font-style: italic;
     font-weight: bold;
+    color: white;
+    text-shadow: 2px 2px 8px darkgreen;
 }
 
-.main_info > p {
-    margin: 0;
+.ind_info {
+    margin-bottom: 15px;
+    padding: 10px 0;
+    border-bottom: 1px solid darkgreen;
+}
+
+.tbl_info {
+    vertical-align: top;
+}
+
+td {
+    padding-top: 5px;
+}
+
+.left_column {
+    font-size: 0.75em;
+    font-weight: bold;
+    padding-right: 10px;
+    color: darkgreen;
+}
+
+.uni_cells {
+    font-size: 0.8em;
+    padding-bottom: 7px;
+    padding-top: 0;
     text-align: right;
+}
+
+.right_column {
+    vertical-align: middle;
 }

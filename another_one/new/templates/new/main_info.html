@@ -6,14 +6,14 @@
 			<img
 					src="{% static ''|add:myuser.photo.url %}"
 					alt="Личная фотография"
-					width="200"
+					width="220"
 			>
 		</a>
 	{% else %}
 		<img
 			src="{% static 'images/user_s_photo/default.jpg' %}"
 			alt="Фото по умолчанию"
-			width="200"
+			width="220"
 		>
 	{% endif %}
 	<div class="motto">
@@ -23,11 +23,62 @@
 			у пользователя нет девиза
 		{% endif %}
 	</div>
-	<p>{% if myuser.citizenship %}{{ myuser.citizenship }}{% endif %}</p>
-	<p>{% if myuser.city %}{{ myuser.city }}{% endif %}</p>
-	<p>{% if myuser.birthday %}{{ myuser.birthday }}{% endif %}</p>
-	<p>{% if myuser.get_biological_sex_display %}{{ myuser.get_biological_sex_display }}{% endif %}</p>
-	<p>{% if myuser.get_the_level_of_professionalism_display %}{{ myuser.get_the_level_of_professionalism_display }}{% endif %}</p>
-	<p>{% if myuser.job %}{{ myuser.job }}{% endif %}</p>
-	<hr>
+	<table class="ind_info">
+		<tbody class="tbl_info">
+			{% if myuser.city %}
+			<tr>
+				<td class="left_column">расположение:</td>
+				<td class="right_column">{{ myuser.city }}</td>
+			</tr>
+			{% endif %}
+
+			{% if myuser.birthday %}
+			<tr>
+				<td class="left_column">день рождения:</td>
+				<td class="right_column">{{ myuser.birthday }}</td>
+			</tr>
+			{% endif %}
+
+			{% if myuser.profession %}
+			<tr>
+				<td class="left_column">профессия:</td>
+				<td class="right_column">{{ myuser.profession }}</td>
+			</tr>
+			{% endif %}
+
+			{% if myuser %}
+			<tr>
+				<td colspan="2" class="uni_cells">уточнение профессии</td>
+			</tr>
+			{% endif %}
+
+			{% if myuser.get_the_level_of_professionalism_display %}
+			<tr>
+				<td class="left_column">уровень:</td>
+				<td class="right_column">{{ myuser.get_the_level_of_professionalism_display }}</td>
+			</tr>
+			{% endif %}
+
+			{% if myuser.job %}
+			<tr>
+				<td class="left_column">место работы:</td>
+				<td class="right_column">{{ myuser.job }}</td>
+			</tr>
+			{% endif %}
+
+			{% if myuser.citizenship %}
+			<tr>
+				<td class="left_column">гражданство:</td>
+				<td class="right_column">{{ myuser.citizenship }}</td>
+			</tr>
+			{% endif %}
+
+			{% if myuser %}
+			<tr>
+				<td class="left_column">языки:</td>
+				<td class="right_column"></td>
+			</tr>
+			{% endif %}
+		</tbody>
+	</table>
 {% endif %}
