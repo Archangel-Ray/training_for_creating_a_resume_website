@@ -21,25 +21,6 @@ p {
     padding: 0 20px 0;
 }
 
-.right_bar {
-    position: sticky;
-    top: 0;
-    flex: 0 200px;
-}
-
-.motto {
-    padding: 0 3px;
-    text-align: center;
-    font-size: 0.9em;
-    font-style: italic;
-    font-weight: bold;
-}
-
-.main_info > p {
-    margin: 0;
-    text-align: right;
-}
-
 .additional_menu {
     display: flex;
     justify-content: space-between;
