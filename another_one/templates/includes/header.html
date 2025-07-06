@@ -1,4 +1,5 @@
-{% if user == myuser %}
-    <a href="/accounts/">редактировать личные данные</a>
+{% if user == myuser or "accounts" in request.path %}
+    <a href="{% url 'редактировать личные данные' %}">заполнить личные данные</a>
+    <a href="/accounts/">настройка аккаунта</a>
     <a href="/accounts/logout/">выйти</a>
 {% endif %}
