@@ -32,6 +32,9 @@ class UpdateIndividual(UpdateView):
         return self.request.user
 
 
+update_individual = UpdateIndividual.as_view()
+
+
 def skills(request):
     context = {
         "i_am": MyUser.objects.get(id=1),
