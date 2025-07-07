@@ -1,9 +1,17 @@
 from django.contrib import admin
 
-from . import models
+from .models import (
+    MyUser,
+    CountryOfConsignment,
+    City,
+    Profession,
+    SupplementProfession,
+    Organization,
+)
 
-admin.site.register(models.MyUser)
-admin.site.register(models.CountryOfConsignment)
-admin.site.register(models.City)
-admin.site.register(models.Profession)
-admin.site.register(models.Organization)
+admin.site.register(MyUser)
+admin.site.register(CountryOfConsignment)
+admin.site.register(City)
+admin.site.register(SupplementProfession)
+admin.site.register(Profession)
+admin.site.register(Organization)

@@ -27,8 +27,21 @@ class City(models.Model):
         return self.name
 
 
+class SupplementProfession(models.Model):
+    name = models.CharField(max_length=100, unique=True, verbose_name="Наименование")
+
+    class Meta:
+        ordering = ["name"]
+        verbose_name = "Специализация"
+        verbose_name_plural = "Специализации"
+
+
 class Profession(models.Model):
     name = models.CharField(max_length=100, unique=True, verbose_name="Название")
+    supplement_the_profession_of_the_user = models.ManyToManyField(
+        SupplementProfession,
+        related_name="supplement"
+    )
 
     class Meta:
         ordering = ["name"]
