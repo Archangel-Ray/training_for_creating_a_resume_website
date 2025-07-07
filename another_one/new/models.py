@@ -35,6 +35,9 @@ class SupplementProfession(models.Model):
         verbose_name = "Специализация"
         verbose_name_plural = "Специализации"
 
+    def __str__(self):
+        return self.name
+
 
 class Profession(models.Model):
     name = models.CharField(max_length=100, unique=True, verbose_name="Название")
