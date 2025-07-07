@@ -15,6 +15,7 @@ class UpdateIndividualForm(ModelForm):
             "citizenship",
             "city",
             "profession",
+            "specialization_professions",
             "the_level_of_professionalism",
             "job",
             "motto",

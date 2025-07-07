@@ -40,7 +40,7 @@ class Profession(models.Model):
     name = models.CharField(max_length=100, unique=True, verbose_name="Название")
     supplement_the_profession_of_the_user = models.ManyToManyField(
         SupplementProfession,
-        related_name="supplement"
+        related_name="supplement_profession"
     )
 
     class Meta:
@@ -101,6 +101,13 @@ class MyUser(AbstractUser):
     city = models.ForeignKey(City, on_delete=models.SET_NULL, null=True, blank=True, verbose_name="Город")
     profession = models.ForeignKey(
         Profession, on_delete=models.SET_NULL, null=True, blank=True, verbose_name="Профессия"
+    )
+    specialization_professions = models.ManyToManyField(
+        SupplementProfession,
+        null=True,
+        blank=True,
+        related_name="supplement_user",
+        verbose_name="Специализация",
     )
     the_level_of_professionalism = models.CharField(
         max_length=2,
