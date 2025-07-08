@@ -8,6 +8,7 @@ class UpdateIndividualForm(ModelForm):
         model = MyUser
         fields = [
             "first_name",
+            "patronymic",
             "last_name",
             "photo",
             "biological_sex",
