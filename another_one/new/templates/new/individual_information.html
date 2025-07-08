@@ -2,6 +2,7 @@
 {% block title %}Информация о {{ user }}{% endblock %}
 {% block body %}
 {{ myuser.first_name }}
+{{ myuser.patronymic }}
 {{ myuser.last_name }}
 {% if myuser.about_me %}
     <p>{{ myuser.about_me }}</p>
