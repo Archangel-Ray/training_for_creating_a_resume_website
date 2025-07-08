@@ -46,11 +46,15 @@
 			</tr>
 			{% endif %}
 
-			{% if myuser %}
-			<tr>
-				<td colspan="2" class="uni_cells">уточнение профессии</td>
-			</tr>
-			{% endif %}
+            {% if myuser.profession %}
+                {% if myuser.specialization_professions %}
+                    <tr>
+                        <td colspan="2" class="uni_cells">
+                            {{ myuser.specialization_professions.all|join:", " }}
+                        </td>
+                    </tr>
+                {% endif %}
+            {% endif %}
 
 			{% if myuser.get_the_level_of_professionalism_display %}
 			<tr>
