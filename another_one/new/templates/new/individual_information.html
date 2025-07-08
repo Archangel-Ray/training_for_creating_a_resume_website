@@ -4,7 +4,7 @@
     {% if myuser.username == "admin" %}
         Сергей Савельев
     {% else %}
-        Информация о {{ myuser }}
+        Информация о {{ myuser.first_name }} {{ myuser.last_name }}
     {% endif %}
 {% endblock title %}
 
