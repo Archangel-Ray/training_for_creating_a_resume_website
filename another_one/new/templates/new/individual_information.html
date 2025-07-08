@@ -1,9 +1,11 @@
 {%extends 'base.html'%}
 {% block title %}Информация о {{ user }}{% endblock %}
 {% block body %}
-{{ myuser.first_name }}
-{{ myuser.patronymic }}
-{{ myuser.last_name }}
+<div class="name_user">
+    {% if myuser.first_name %}{{ myuser.first_name }}{% else %}{% endif %}
+    {% if myuser.patronymic %}{{ myuser.patronymic }}{% else %}{% endif %}
+    {% if myuser.last_name %}{{ myuser.last_name }}{% else %}{% endif %}
+</div>
 {% if myuser.about_me %}
     <p>{{ myuser.about_me }}</p>
 {% else %}
