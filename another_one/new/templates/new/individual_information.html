@@ -1,5 +1,13 @@
 {%extends 'base.html'%}
-{% block title %}Информация о {{ user }}{% endblock %}
+
+{% block title %}
+    {% if myuser.username == "admin" %}
+        Сергей Савельев
+    {% else %}
+        Информация о {{ myuser }}
+    {% endif %}
+{% endblock title %}
+
 {% block body %}
 {% if myuser.first_name or myuser.patronymic or myuser.last_name%}
     <div class="name_user">
