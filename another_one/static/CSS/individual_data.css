@@ -11,7 +11,7 @@
     font-style: italic;
     font-weight: bold;
     color: white;
-    text-shadow: 2px 2px 8px darkgreen;
+    text-shadow: 0.09em 0.09em 0.5em #011000;
 }
 
 .ind_info {
