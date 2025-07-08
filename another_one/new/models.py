@@ -97,6 +97,7 @@ class MyUser(AbstractUser):
         blank=True,
         verbose_name="Пол",
     )
+    patronymic = models.CharField(max_length=100, verbose_name="Отчество", null=True, blank=True)
     birthday = models.DateField(null=True, blank=True, verbose_name="День рождения")
     citizenship = models.ForeignKey(
         CountryOfConsignment, on_delete=models.SET_NULL, null=True, blank=True, verbose_name="Гражданство"
