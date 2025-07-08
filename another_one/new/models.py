@@ -107,7 +107,6 @@ class MyUser(AbstractUser):
     )
     specialization_professions = models.ManyToManyField(
         SupplementProfession,
-        null=True,
         blank=True,
         related_name="supplement_user",
         verbose_name="Специализация",
