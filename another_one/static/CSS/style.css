@@ -1,5 +1,10 @@
 body {
     background-color: #d6ffe3;
+    background-image: url("../images/background.jpg");
+    background-repeat: no-repeat;
+    background-position: center center;
+    background-attachment: fixed;
+    background-size: cover;
     max-width: 768px;
     margin: auto;
 }
