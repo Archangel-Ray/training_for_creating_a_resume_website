@@ -2,6 +2,11 @@
     position: sticky;
     top: 0;
     flex: 0 220px;
+    height: 100%;
+}
+
+.main_info {
+    background: #122400a1;
 }
 
 .motto {
@@ -17,7 +22,7 @@
 .ind_info {
     margin-bottom: 15px;
     padding: 10px 0;
-    border-bottom: 1px solid darkgreen;
+    border-bottom: 0.1em solid #87b742;
 }
 
 .tbl_info {
@@ -32,7 +37,8 @@ td {
     font-size: 0.75em;
     font-weight: bold;
     padding-right: 10px;
-    color: darkgreen;
+    color: #87b742;
+    text-shadow: 0.1em 0.1em 0.5em #000;
 }
 
 .uni_cells {
@@ -40,8 +46,11 @@ td {
     padding-bottom: 7px;
     padding-top: 0;
     text-align: left;
+    color: #ccdbc9;
 }
 
 .right_column {
     vertical-align: middle;
+    color: white;
+    text-shadow: 0.09em 0.09em 0.2em #000;
 }

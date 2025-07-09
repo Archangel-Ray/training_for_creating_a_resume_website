@@ -11,17 +11,23 @@
     text-align: left;
     margin-top: 50px;
     margin-bottom: 0;
+    color: white;
+    font-weight: bold;
+    text-shadow: 0.1em 0.1em 0.2em #000;
 }
 
 .menu_item {
-    background-color: white;
+    font-size: 1.5em;
+    font-weight: bold;
+    color: #142200;
+    text-shadow: 0.1em 0.1em 0.5em white;
+    background-color: #fafff88c;
     padding: 10px;
     margin-bottom: 15px;
-    color: darkgreen;
 }
 
 .menu_item:hover {
-    background-color: darkgreen;
+    background-color: #142200;
     color: white;
 }
 

@@ -18,7 +18,7 @@ p {
 }
 
 .info {
-    background-color: #dcf0e6;
+    background-color: #e8eee3d9;
     flex: 1 1;
 }
 
@@ -36,6 +36,8 @@ p {
     border-bottom: solid 3px #023000;
     color: white;
     text-shadow: 0.05em 0.05em 0.2em #023000;
+    background: #12440e21;
+    border-radius: 15px;
 }
 
 .additional_menu {
@@ -50,8 +52,9 @@ p {
 .footer {
     position: sticky;
     bottom: 0;
+    color: white;
     text-align: center;
-    background: #c4ceb4;
+    background: #122400de;
     padding: 10px 0;
     margin-top: 50px;
 }
