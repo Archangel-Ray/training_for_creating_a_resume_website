@@ -1,12 +1,22 @@
 .right_bar {
     position: sticky;
-    top: 0;
+    top: -220px;
     flex: 0 220px;
     height: 100%;
 }
 
 .main_info {
     background: #122400a1;
+}
+
+.photo {
+    height: 220px;
+}
+
+.photo img {
+    object-fit: cover;
+    width: 100%;
+    height: 100%;
 }
 
 .motto {

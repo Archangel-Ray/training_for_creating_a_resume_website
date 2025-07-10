@@ -1,21 +1,20 @@
 {% load static %}
 
 {% if myuser %}
-	{% if myuser.photo %}
+	<div class="photo">{% if myuser.photo %}
 		<a href="/{{ myuser.id }}">
 			<img
 					src="{% static ''|add:myuser.photo.url %}"
 					alt="Личная фотография"
-					width="220"
 			>
 		</a>
-	{% else %}
+		{% else %}
 		<img
-			src="{% static 'images/user_s_photo/default.jpg' %}"
-			alt="Фото по умолчанию"
-			width="220"
+				src="{% static 'images/user_s_photo/default.jpg' %}"
+				alt="Фото по умолчанию"
 		>
-	{% endif %}
+		{% endif %}
+	</div>
 	<div class="motto">
 		{% if myuser.motto %}
 			{{ myuser.motto }}
