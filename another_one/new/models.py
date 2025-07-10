@@ -69,10 +69,30 @@ class Organization(models.Model):
 
 
 class Language(models.Model):
-    name = models.CharField(max_length=100, unique=True, verbose_name="Язык")
+    LANGUAGE_LEVEL = {
+        "A1": "начальный",
+        "A2": "элементарный",
+        "B1": "средний",
+        "B2": "выше среднего",
+        "C1": "продвинутый",
+        "C2": "профессиональный",
+    }
+
+    name = models.CharField(max_length=100, verbose_name="Язык")
+    level = models.CharField(
+        max_length=2,
+        choices=LANGUAGE_LEVEL,
+        verbose_name="уровень",
+        default="A1"
+    )
+
+    class Meta:
+        ordering = ["name"]
+        verbose_name = "Иностранный язык"
+        verbose_name_plural = "Иностранные языки"
 
     def __str__(self):
-        return self.name
+        return f"{self.name}({self.level})"
 
 
 class MyUser(AbstractUser):
