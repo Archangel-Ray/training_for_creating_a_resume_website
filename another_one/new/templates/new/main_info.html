@@ -77,10 +77,14 @@
 			</tr>
 			{% endif %}
 
-			{% if myuser %}
+			{% if myuser.languages.all %}
 			<tr>
-				<td class="left_column">языки:</td>
-				<td class="right_column"></td>
+				<td colspan="2" class="left_column">знание языков:</td>
+			</tr>
+			<tr>
+				<td colspan="2" class="uni_cells">
+					{{ myuser.languages.all|join:", " }}
+				</td>
 			</tr>
 			{% endif %}
 		</tbody>
