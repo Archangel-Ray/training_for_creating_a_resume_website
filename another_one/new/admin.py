@@ -7,6 +7,7 @@ from .models import (
     Profession,
     SupplementProfession,
     Organization,
+    Language,
 )
 
 
@@ -20,3 +21,4 @@ admin.site.register(City)
 admin.site.register(SupplementProfession)
 admin.site.register(Profession, ProfessionAdmin)
 admin.site.register(Organization)
+admin.site.register(Language)
