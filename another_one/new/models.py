@@ -137,7 +137,7 @@ class MyUser(AbstractUser):
         Language,
         blank=True,
         related_name="knowledge_of_foreign_languages",
-        verbose_name="Язык",
+        verbose_name="Знание языков",
     )
     motto = models.CharField(max_length=1000, verbose_name="Мой девиз", null=True, blank=True)
     about_me = models.TextField(verbose_name="Обо мне", null=True, blank=True)
