@@ -68,6 +68,13 @@ class Organization(models.Model):
         return self.name
 
 
+class Language(models.Model):
+    name = models.CharField(max_length=100, unique=True, verbose_name="Язык")
+
+    def __str__(self):
+        return self.name
+
+
 class MyUser(AbstractUser):
     PROFESSIONAL_LEVELS = {
         "LR": "ученик",
