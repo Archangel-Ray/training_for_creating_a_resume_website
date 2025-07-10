@@ -19,6 +19,7 @@ class UpdateIndividualForm(ModelForm):
             "specialization_professions",
             "the_level_of_professionalism",
             "job",
+            "languages",
             "motto",
             "about_me",
         ]
