@@ -1,8 +1,11 @@
 .right_bar {
+    flex: 0 220px;
+    background: #1224005e;
+/*
     position: sticky;
     top: -220px;
-    flex: 0 220px;
     height: 100%;
+*/
 }
 
 .main_info {
