@@ -97,6 +97,7 @@ class Language(models.Model):
 
 class MyUser(AbstractUser):
     PROFESSIONAL_LEVELS = {
+        "": "— Нет никакого —",
         "LR": "ученик",
         "BR": "начинающий",
         "LL": "небольшой опыт",
@@ -107,6 +108,7 @@ class MyUser(AbstractUser):
     }
 
     BIOLOGICAL_SEX = {
+        "": "— Не выбран —",
         "F": "женский",
         "M": "мужской"
     }
