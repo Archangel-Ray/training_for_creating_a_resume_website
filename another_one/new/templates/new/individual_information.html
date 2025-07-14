@@ -17,7 +17,7 @@
     </div>
 {% endif %}
 {% if myuser.about_me %}
-    <p>{{ myuser.about_me }}</p>
+    <div class="about_me">{{ myuser.about_me|linebreaks }}</div>
 {% else %}
     <p>пользователь ничего о себе не написал</p>
 {% endif %}
