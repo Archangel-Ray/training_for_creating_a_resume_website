@@ -1,10 +1,23 @@
-from django.forms import ModelForm, DateField, DateInput
+from django.forms import (
+    ModelForm,
+    DateField,
+    DateInput,
+)
 
-from new.models import MyUser
+from .models import (
+    MyUser,
+)
 
 
 class UpdateIndividualForm(ModelForm):
-    birthday = DateField(widget=DateInput(attrs={'type': 'date'}, format='%Y-%m-%d'), required=False)
+    birthday = DateField(
+        widget=DateInput(
+            attrs={'type': 'date'},
+            format='%Y-%m-%d'
+        ),
+        required=False,
+        label="День рождения"
+    )
 
     class Meta:
         model = MyUser
