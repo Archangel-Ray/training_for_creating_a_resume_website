@@ -57,6 +57,10 @@ button:hover {
     border-radius: 15px;
 }
 
+.about_me p {
+    text-align: justify;
+}
+
 .additional_menu {
     display: flex;
     justify-content: space-between;
