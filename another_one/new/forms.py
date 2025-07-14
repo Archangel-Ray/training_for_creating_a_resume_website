@@ -38,3 +38,10 @@ class UpdateIndividualForm(ModelForm):
             "motto",
             "about_me",
         ]
+
+    def __init__(self, *args, **kwargs):
+        super().__init__(*args, **kwargs)
+        self.fields['citizenship'].empty_label = '— Не выбрано —'
+        self.fields['city'].empty_label = '— Не выбран —'
+        self.fields['profession'].empty_label = '— Не выбрана —'
+        self.fields['job'].empty_label = '— Не указано —'
