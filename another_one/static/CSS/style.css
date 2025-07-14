@@ -13,6 +13,13 @@ p {
     text-align: center;
 }
 
+select,
+input {
+    background: #fafff88c;
+    border: 0;
+    border-radius: 0.2em;
+}
+
 button {
     display: block;
     padding: 0.5em 1em;
