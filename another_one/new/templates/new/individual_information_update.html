@@ -6,7 +6,7 @@
         <table class="edition_personal_information">
             <tbody class="edition_personal">
                 {% for field in form %}
-                    <tr>
+                    <tr class="edition_table">
                         <td class="edition_table_left">{{ field.label_tag }}</td>
                         <td class="edition_table_right">
                             {{ field.errors }}

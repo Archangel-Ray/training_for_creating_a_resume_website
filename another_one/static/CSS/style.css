@@ -114,14 +114,22 @@ button:hover {
     margin-top: 50px;
 }
 
+.edition_personal_information {
+    width: 100%;
+}
+
+.edition_table {
+    display: flex;
+}
+
 .edition_table_left {
-    width: 8em;
+    width: 11em;
     text-align: right;
     font-size: 0.8em;
     vertical-align: top;
 }
 
 .edition_table_right {
-    max-width: 390px;
+    width: 100%;
     border-top: 0.1em solid #eeffea;
 }
