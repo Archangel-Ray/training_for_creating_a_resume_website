@@ -14,10 +14,17 @@ p {
 }
 
 select,
-input {
+input,
+textarea {
     background: #fafff88c;
     border: 0;
     border-radius: 0.2em;
+    width: 100%;
+}
+
+textarea {
+    resize: none;
+    height: 250px;
 }
 
 button {
