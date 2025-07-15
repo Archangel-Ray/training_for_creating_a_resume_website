@@ -44,6 +44,14 @@ button:hover {
     color: white;
 }
 
+.errorlist {
+    color: red;
+    list-style-type: none;
+    margin: 0;
+    padding: 1em 0.5em;
+    text-align: center;
+}
+
 .main {
     display: flex;
 }
