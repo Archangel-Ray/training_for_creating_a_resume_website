@@ -3,6 +3,9 @@ from django.forms import (
     DateField,
     DateInput,
 )
+from django.forms.widgets import (
+    FileInput,
+)
 
 from .models import (
     MyUser,
@@ -45,3 +48,4 @@ class UpdateIndividualForm(ModelForm):
         self.fields['city'].empty_label = '— Не выбран —'
         self.fields['profession'].empty_label = '— Не выбрана —'
         self.fields['job'].empty_label = '— Не указано —'
+        self.fields['photo'].widget = FileInput()
