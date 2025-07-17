@@ -10,7 +10,17 @@
                         <td class="edition_table_left">{{ field.label_tag }}</td>
                         <td class="edition_table_right">
                             {{ field.errors }}
-                            {{ field }}
+                            {% if field.name == 'specialization_professions' %}
+                                {% for choice in field %}
+                                    <label for="{{ choice.id_for_label }}">
+                                        {{ choice }}
+                                    </label>
+                                    <br>
+                                {% endfor %}
+                            {% else %}
+                                {{ field }}
+                            {% endif %}
+
                         </td>
                     </tr>
                 {% endfor %}
