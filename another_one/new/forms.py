@@ -2,6 +2,7 @@ from django.forms import (
     ModelForm,
     DateField,
     DateInput,
+    CheckboxSelectMultiple,
 )
 from django.forms.widgets import (
     FileInput,
@@ -43,6 +44,7 @@ class UpdateIndividualForm(ModelForm):
         ]
         widgets = {
             'photo': FileInput,
+            'specialization_professions': CheckboxSelectMultiple,
         }
 
     def __init__(self, *args, **kwargs):
