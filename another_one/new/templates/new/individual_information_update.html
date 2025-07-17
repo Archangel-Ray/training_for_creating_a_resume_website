@@ -3,29 +3,25 @@
 {% block body %}
     <form method="POST" enctype="multipart/form-data">
         {% csrf_token %}
-        <table class="edition_personal_information">
-            <tbody class="edition_personal">
-                {% for field in form %}
-                    <tr class="edition_table">
-                        <td class="edition_table_left">{{ field.label_tag }}</td>
-                        <td class="edition_table_right">
-                            {{ field.errors }}
-                            {% if field.name == 'specialization_professions' %}
-                                {% for choice in field %}
-                                    <label for="{{ choice.id_for_label }}">
-                                        {{ choice }}
-                                    </label>
-                                    <br>
-                                {% endfor %}
-                            {% else %}
-                                {{ field }}
-                            {% endif %}
+        {% for field in form %}
+            <div class="edition_table">
+                <div class="edition_table_left">{{ field.label_tag }}</div>
+                <div class="edition_table_right">
+                    {{ field.errors }}
+                    {% if field.name == 'specialization_professions' %}
+                        {% for choice in field %}
+                            <label for="{{ choice.id_for_label }}">
+                                {{ choice }}
+                            </label>
+                            <br>
+                        {% endfor %}
+                    {% else %}
+                        {{ field }}
+                    {% endif %}
 
-                        </td>
-                    </tr>
-                {% endfor %}
-            </tbody>
-        </table>
+                </div>
+            </div>
+        {% endfor %}
         <button type="submit">Сохранить</button>
     </form>
 {% endblock body %}

@@ -114,10 +114,6 @@ button:hover {
     margin-top: 50px;
 }
 
-.edition_personal_information {
-    width: 100%;
-}
-
 .edition_table {
     display: flex;
 }
