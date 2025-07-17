@@ -41,6 +41,9 @@ class UpdateIndividualForm(ModelForm):
             "motto",
             "about_me",
         ]
+        widgets = {
+            'photo': FileInput,
+        }
 
     def __init__(self, *args, **kwargs):
         super().__init__(*args, **kwargs)
@@ -48,4 +51,3 @@ class UpdateIndividualForm(ModelForm):
         self.fields['city'].empty_label = '— Не выбран —'
         self.fields['profession'].empty_label = '— Не выбрана —'
         self.fields['job'].empty_label = '— Не указано —'
-        self.fields['photo'].widget = FileInput()
