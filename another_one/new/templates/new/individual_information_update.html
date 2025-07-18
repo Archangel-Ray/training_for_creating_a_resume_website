@@ -8,12 +8,7 @@
                 <div class="edition_table_left">{{ field.label_tag }}</div>
                 <div class="edition_table_right">
                     {{ field.errors }}
-                    {% if field.name == 'specialization_professions' or field.name == 'languages' %}
-                        <div class="for_choice_label">{{ field }}</div>
-                    {% else %}
-                        {{ field }}
-                    {% endif %}
-
+                    {{ field }}
                 </div>
             </div>
         {% endfor %}

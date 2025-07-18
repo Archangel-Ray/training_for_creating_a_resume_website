@@ -19,6 +19,16 @@ textarea {
     background: #fafff88c;
     border: 0;
     border-radius: 0.2em;
+}
+
+input[type="text"],
+input[type="file"],
+input[type="date"] {
+    width: 100%;
+}
+
+select,
+textarea {
     width: 100%;
 }
 
