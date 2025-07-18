@@ -1,6 +1,17 @@
 {%extends 'base.html'%}
 {% block title %}Редактирование данных {{ user }}{% endblock %}
 {% block body %}
+<p style="
+            color: #fff;
+            border: 0.1em solid #eeffea;
+            padding: 1em;
+            border-radius: 0.4em;
+            background: #d7ddc3;
+            text-shadow: 0.01em 0.01em 1em black;
+            ">
+    Если чего-то не хватает, пишите внизу в комментариях, что добавить: Страну, Город, Профессию, Специализацию.
+    Короче всё, что хотите добавить или по вашему мнению тут не хватает. Я обязательно это добавлю.
+</p>
     <form method="POST" enctype="multipart/form-data">
         {% csrf_token %}
         {% for field in form %}
