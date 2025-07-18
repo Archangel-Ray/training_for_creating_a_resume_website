@@ -140,7 +140,3 @@ button:hover {
 .edition_table_right {
     flex: 0 100%;
 }
-
-.for_choice_label input {
-    width: 17px;
-}
