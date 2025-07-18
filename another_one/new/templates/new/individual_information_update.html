@@ -10,7 +10,7 @@
                     {{ field.errors }}
                     {% if field.name == 'specialization_professions' %}
                         {% for choice in field %}
-                            {{ choice }}
+                            <div class="for_choice_label">{{ choice }}</div>
                         {% endfor %}
                     {% else %}
                         {{ field }}
