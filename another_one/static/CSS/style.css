@@ -116,18 +116,19 @@ button:hover {
 
 .edition_table {
     display: flex;
+    padding: 0.3em 0;
+    border-top: 0.1em solid #eeffea;
 }
 
 .edition_table_left {
-    width: 11em;
     text-align: right;
     font-size: 0.8em;
-    vertical-align: top;
+    flex: 11em 1;
+    padding-right: 0.5em;
 }
 
 .edition_table_right {
-    width: 100%;
-    border-top: 0.1em solid #eeffea;
+    flex: 0 100%;
 }
 
 .for_choice_label input {
