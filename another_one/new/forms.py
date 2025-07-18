@@ -4,9 +4,9 @@ from django.forms import (
     DateInput,
     CheckboxSelectMultiple,
 )
-from django.forms.widgets import (
-    FileInput,
-)
+# from django.forms.widgets import (
+#     FileInput,
+# )
 
 from .models import (
     MyUser,
@@ -43,7 +43,7 @@ class UpdateIndividualForm(ModelForm):
             "about_me",
         ]
         widgets = {
-            'photo': FileInput,
+            # 'photo': FileInput,
             'specialization_professions': CheckboxSelectMultiple,
             'languages': CheckboxSelectMultiple,
         }
