@@ -6,7 +6,9 @@
         {% for field in form %}
             <div class="edition_table">
                 <div class="edition_table_left">{{ field.label_tag }}</div>
-                <div class="edition_table_right">
+                <div class="edition_table_right
+                {% if field.name in '[specialization_professions, languages]' %} rollUp {% endif %}"
+                >
                     {{ field.errors }}
                     {{ field }}
                 </div>
