@@ -33,6 +33,7 @@
 }
 
 .ind_info {
+    width: 100%;
     margin-bottom: 15px;
     padding: 10px 0;
     border-bottom: 0.1em solid #87b742;
