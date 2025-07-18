@@ -45,6 +45,7 @@ class UpdateIndividualForm(ModelForm):
         widgets = {
             'photo': FileInput,
             'specialization_professions': CheckboxSelectMultiple,
+            'languages': CheckboxSelectMultiple,
         }
 
     def __init__(self, *args, **kwargs):
