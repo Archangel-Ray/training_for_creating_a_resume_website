@@ -45,6 +45,16 @@ textarea {
     scrollbar-width: thin;
 }
 
+.basic_inf a {
+    text-decoration: none;
+    color: #122400;
+}
+
+.basic_inf a:hover {
+    font-weight: bold;
+    text-shadow: 0.05em 0.05em 0.3em white;
+}
+
 button {
     display: block;
     padding: 0.5em 1em;
