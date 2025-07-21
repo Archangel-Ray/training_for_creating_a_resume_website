@@ -13,6 +13,13 @@ p {
     text-align: center;
 }
 
+h1, h2, h3, h4, h5 {
+    text-align: center;
+    color: white;
+    text-shadow: 0 0 0.1em #122400;
+    border-top: 1.5px solid #fff7df;
+}
+
 select,
 input,
 textarea {
