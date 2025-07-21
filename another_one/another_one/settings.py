@@ -52,6 +52,15 @@ INSTALLED_APPS = [
     # приложения проекта
     'new.apps.NewConfig',
 ]
+"""
+добавление социального приложения.
+в админ-панели:
+"Добавить" приложение. указать: Провайдера, Название, Id клиента (которое получено у провайдера), секретный ключ.
+
+Яндекс:
+https://oauth.yandex.ru/ создать приложение. указать название, иконку, эл.адрес (для отчётов).
+в веб-сервисах указать Redirect URI: http://--хостинг--/accounts/yandex/login/callback
+"""
 
 MIDDLEWARE = [
     'django.middleware.security.SecurityMiddleware',
