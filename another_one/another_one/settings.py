@@ -60,6 +60,9 @@ INSTALLED_APPS = [
 Яндекс:
 https://oauth.yandex.ru/ создать приложение. указать название, иконку, эл.адрес (для отчётов).
 в веб-сервисах указать Redirect URI: http://--хостинг--/accounts/yandex/login/callback
+ВК:
+https://id.vk.com/about/business/go/docs/ru/vkid/latest/vk-id/intro/plan
+нужна лицензия на https протокол, реальный хостинг.
 """
 
 MIDDLEWARE = [
