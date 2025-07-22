@@ -16,8 +16,9 @@ p {
 h1, h2, h3, h4, h5 {
     text-align: center;
     color: white;
-    text-shadow: 0 0 0.1em #122400;
+    text-shadow: 0.04em 0.04em 0.15em #122400;
     border-top: 1.5px solid #fff7df;
+    background: #1224000d;
 }
 
 select,

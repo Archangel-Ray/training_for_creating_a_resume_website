@@ -11,7 +11,7 @@
 {% if user.is_authenticated %}
 <p>Личный кабинет:</p>
 <a href="{% url 'отобразить личные данные' user.id %}">
-	<div class="menu_item menu_item_accounts">Вы вошли под именем: <p>{{user}}</p></div>
+	<div class="menu_item menu_item_accounts">Вы вошли под ником: <p>{{user}}</p></div>
 </a>
 {% else %}
 <a href="/accounts/">
