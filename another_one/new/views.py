@@ -1,5 +1,5 @@
 from django.contrib.auth.decorators import login_required
-from django.shortcuts import render
+from django.shortcuts import render, redirect
 from django.urls import reverse_lazy
 from django.utils.decorators import method_decorator
 from django.views.generic import DetailView
@@ -40,3 +40,7 @@ def skills(request):
         "i_am": MyUser.objects.get(id=1),
     }
     return render(request, 'new/display_data.html', context=context)
+
+
+def transition_to_watsapp(request):
+    return redirect("https://wa.me/79885173602")
