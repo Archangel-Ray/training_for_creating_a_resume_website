@@ -44,3 +44,7 @@ def skills(request):
 
 def transition_to_watsapp(request):
     return redirect("https://wa.me/79885173602")
+
+
+def transition_to_microsoft_teams(request):
+    return redirect("https://teams.microsoft.com/l/chat/0/0?users=sergey.savelyev2020@gmail.com")
