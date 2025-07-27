@@ -1,0 +1,16 @@
+{%extends 'base.html'%}
+{% block title %}Отправка сообщения Сергею Савельеву{% endblock %}
+{% block body %}
+{% if sent %}
+    <h3>Сообщение было отправлено. Спасибо.<br>Я обязательно его прочитаю.</h3>
+{% else %}
+    <h3>Отправить мне сообщение на эл.почту.</h3>
+    <form method="post" style="display: grid;gap: 10px;">
+        {% csrf_token %}
+        <input type="text" name="name" placeholder="Как Вас зовут?" required>
+        <input type="email" name="email" placeholder="Ваш email нужен мне что бы я знал куда посылать ответ." required>
+        <textarea name="message" placeholder="Что Вы хотели мне написать?" required></textarea>
+        <button type="submit">Отправить</button>
+    </form>
+{% endif %}
+{% endblock body %}
