@@ -30,6 +30,7 @@ textarea {
 }
 
 input[type="text"],
+input[type="email"],
 input[type="file"],
 input[type="date"] {
     width: 100%;
