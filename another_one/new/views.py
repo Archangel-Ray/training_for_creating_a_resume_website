@@ -1,4 +1,5 @@
 from django.contrib.auth.decorators import login_required
+from django.core.mail import send_mail
 from django.shortcuts import render, redirect
 from django.urls import reverse_lazy
 from django.utils.decorators import method_decorator
@@ -48,3 +49,23 @@ def transition_to_watsapp(request):
 
 def transition_to_microsoft_teams(request):
     return redirect("https://teams.microsoft.com/l/chat/0/0?users=sergey.savelyev2020@gmail.com")
+
+
+def sending_the_message(request):
+    if request.method == 'POST':
+        name = request.POST.get('name')
+        email = request.POST.get('email')
+        message = request.POST.get('message')
+
+        subject = f'Новое сообщение от {name}'
+        full_message = f'От: {email}\n\n{message}'
+
+        send_mail(
+            subject,
+            full_message,
+            email,  # от кого
+            ['skillfactory_training@mail.ru'],  # кому
+            fail_silently=False,
+        )
+        return render(request, 'new/sending_the_message.html', context={'sent': True})
+    return render(request, 'new/sending_the_message.html')
