@@ -8,6 +8,7 @@ from .models import (
     SupplementProfession,
     Organization,
     Language,
+    LanguageLevel,
 )
 
 
@@ -22,3 +23,4 @@ admin.site.register(SupplementProfession)
 admin.site.register(Profession, ProfessionAdmin)
 admin.site.register(Organization)
 admin.site.register(Language)
+admin.site.register(LanguageLevel)
