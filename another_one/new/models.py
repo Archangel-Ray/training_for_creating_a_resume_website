@@ -100,8 +100,8 @@ class LanguageLevel(models.Model):
 
     class Meta:
         ordering = ["language", "level"]
-        verbose_name = "Иностранный язык"
-        verbose_name_plural = "Иностранные языки"
+        verbose_name = "Уровень иностранного языка"
+        verbose_name_plural = "Уровни иностранных языков"
 
     def __str__(self):
         return f"{self.language}({self.level})"
