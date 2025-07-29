@@ -69,6 +69,18 @@ class Organization(models.Model):
 
 
 class Language(models.Model):
+    name = models.CharField(max_length=100, verbose_name="Язык")
+
+    class Meta:
+        ordering = ["name"]
+        verbose_name = "Иностранный язык"
+        verbose_name_plural = "Иностранные языки"
+
+    def __str__(self):
+        return f"{self.name}"
+
+
+class LanguageLevel(models.Model):
     LANGUAGE_LEVEL = {
         "A1": "начальный",
         "A2": "элементарный",
@@ -78,21 +90,21 @@ class Language(models.Model):
         "C2": "профессиональный",
     }
 
-    name = models.CharField(max_length=100, verbose_name="Язык")
+    language = models.ForeignKey(Language, on_delete=models.CASCADE)
     level = models.CharField(
         max_length=2,
         choices=LANGUAGE_LEVEL,
-        verbose_name="уровень",
+        verbose_name="уровень знания языка",
         default="A1"
     )
 
     class Meta:
-        ordering = ["name"]
+        ordering = ["language", "level"]
         verbose_name = "Иностранный язык"
         verbose_name_plural = "Иностранные языки"
 
     def __str__(self):
-        return f"{self.name}({self.level})"
+        return f"{self.language}({self.level})"
 
 
 class MyUser(AbstractUser):
@@ -156,7 +168,7 @@ class MyUser(AbstractUser):
         verbose_name="Текущее место работы",
     )
     languages = models.ManyToManyField(
-        Language,
+        LanguageLevel,
         blank=True,
         related_name="knowledge_of_foreign_languages",
         verbose_name="Знание языков",
