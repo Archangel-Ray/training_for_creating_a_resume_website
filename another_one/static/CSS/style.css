@@ -21,6 +21,11 @@ h1, h2, h3, h4, h5 {
     background: #1224000d;
 }
 
+::selection {
+  background-color: #122400de;
+  color: #ccdbc9;
+}
+
 select,
 input,
 textarea {
