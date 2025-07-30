@@ -177,3 +177,23 @@ class Generalization(models.Model):
         related_name="description_of_specifics",
         verbose_name="Описание",
     )
+
+
+class Skill(Generalization):
+    pass
+
+
+class Project(Generalization):
+    pass
+
+
+class Course(Generalization):
+    pass
+
+
+class Certificate(Generalization):
+    pass
+
+
+class Passion(Generalization):
+    pass
