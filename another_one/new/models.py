@@ -167,3 +167,13 @@ class MyUser(AbstractUser):
 
 class Description(models.Model):
     text = models.TextField(verbose_name="Описание")
+
+
+class Generalization(models.Model):
+    name = models.CharField(max_length=500, verbose_name="Наименование")
+    description = models.ForeignKey(
+        Description,
+        on_delete=models.CASCADE,
+        related_name="description_of_specifics",
+        verbose_name="Описание",
+    )
