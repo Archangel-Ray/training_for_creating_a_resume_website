@@ -176,6 +176,14 @@ class Generalization(models.Model):
         abstract = True
 
 
+class StartAndEndDates(models.Model):
+    start_date = models.DateField(blank=True, null=True, verbose_name="Дата начала")
+    end_date = models.DateField(blank=True, null=True, verbose_name="Дата конца")
+
+    class Meta:
+        abstract = True
+
+
 class Skill(Generalization):
     pass
 
