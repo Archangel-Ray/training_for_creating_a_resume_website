@@ -195,6 +195,15 @@ class Skill(Generalization):
     pass
 
 
+class Working(Generalization, StartAndEndDates, LinkToTheOriginal):
+    used_skills = models.ManyToManyField(
+        Skill,
+        blank=True,
+        related_name="i_worked_for",
+        verbose_name="Навыки полученные на этой работе",
+    )
+
+
 class Project(Generalization):
     pass
 
