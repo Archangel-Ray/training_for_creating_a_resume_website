@@ -184,6 +184,13 @@ class StartAndEndDates(models.Model):
         abstract = True
 
 
+class LinkToTheOriginal(models.Model):
+    link_to_the_original = models.URLField(blank=True, null=True, verbose_name="Ссылка на оригинал")
+
+    class Meta:
+        abstract = True
+
+
 class Skill(Generalization):
     pass
 
