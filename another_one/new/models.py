@@ -204,8 +204,21 @@ class Working(Generalization, StartAndEndDates, LinkToTheOriginal):
     )
 
 
-class Project(Generalization):
-    pass
+class Project(Generalization, StartAndEndDates, LinkToTheOriginal):
+    used_skills = models.ManyToManyField(
+        Skill,
+        blank=True,
+        related_name="projects",
+        verbose_name="В проекте использованы навыки",
+    )
+    job = models.ForeignKey(
+        Working,
+        null=True,
+        blank=True,
+        on_delete=models.SET_NULL,
+        related_name="projects",
+        verbose_name="Рабочее место проекта",
+    )
 
 
 class Course(Generalization):
