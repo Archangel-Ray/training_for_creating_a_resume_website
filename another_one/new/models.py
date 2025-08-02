@@ -221,8 +221,13 @@ class Project(Generalization, StartAndEndDates, LinkToTheOriginal):
     )
 
 
-class Course(Generalization):
-    pass
+class Course(Generalization, StartAndEndDates, LinkToTheOriginal):
+    used_skills = models.ManyToManyField(
+        Skill,
+        blank=True,
+        related_name="courses",
+        verbose_name="Приобретённые навыки",
+    )
 
 
 class Certificate(Generalization):
