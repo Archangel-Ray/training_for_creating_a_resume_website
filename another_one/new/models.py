@@ -230,8 +230,22 @@ class Course(Generalization, StartAndEndDates, LinkToTheOriginal):
     )
 
 
-class Certificate(Generalization):
-    pass
+class Certificate(Generalization, LinkToTheOriginal):
+    date = models.DateField(verbose_name="Дата получения")
+    image = models.ImageField(
+        "Изображение",
+        upload_to="certificate/",
+        null=True,
+        blank=True,
+    )
+    course = models.OneToOneField(
+        Course,
+        null=True,
+        blank=True,
+        on_delete=models.SET_NULL,
+        related_name="certificate",
+        verbose_name="Где получен",
+    )
 
 
 class Passion(Generalization):
