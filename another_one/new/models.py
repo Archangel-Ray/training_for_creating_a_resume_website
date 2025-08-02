@@ -192,7 +192,9 @@ class LinkToTheOriginal(models.Model):
 
 
 class Skill(Generalization):
-    pass
+    class Meta:
+        verbose_name = "Навык"
+        verbose_name_plural = "Навыки"
 
 
 class Working(Generalization, StartAndEndDates, LinkToTheOriginal):
@@ -202,6 +204,10 @@ class Working(Generalization, StartAndEndDates, LinkToTheOriginal):
         related_name="i_worked_for",
         verbose_name="Навыки полученные на этой работе",
     )
+
+    class Meta:
+        verbose_name = "Рабочее место"
+        verbose_name_plural = "Рабочие места"
 
 
 class Project(Generalization, StartAndEndDates, LinkToTheOriginal):
@@ -220,6 +226,10 @@ class Project(Generalization, StartAndEndDates, LinkToTheOriginal):
         verbose_name="Рабочее место проекта",
     )
 
+    class Meta:
+        verbose_name = "Проект"
+        verbose_name_plural = "Проекты"
+
 
 class Course(Generalization, StartAndEndDates, LinkToTheOriginal):
     used_skills = models.ManyToManyField(
@@ -228,6 +238,10 @@ class Course(Generalization, StartAndEndDates, LinkToTheOriginal):
         related_name="courses",
         verbose_name="Приобретённые навыки",
     )
+
+    class Meta:
+        verbose_name = "Курс"
+        verbose_name_plural = "Курсы"
 
 
 class Certificate(Generalization, LinkToTheOriginal):
@@ -247,6 +261,12 @@ class Certificate(Generalization, LinkToTheOriginal):
         verbose_name="Где получен",
     )
 
+    class Meta:
+        verbose_name = "Сертификат"
+        verbose_name_plural = "Сертификаты"
+
 
 class Passion(Generalization):
-    pass
+    class Meta:
+        verbose_name = "Увлечение"
+        verbose_name_plural = "Увлечения"
