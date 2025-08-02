@@ -165,18 +165,15 @@ class MyUser(AbstractUser):
     about_me = models.TextField(verbose_name="Обо мне", null=True, blank=True)
 
 
-class Description(models.Model):
-    text = models.TextField(verbose_name="Описание")
-
-
 class Generalization(models.Model):
-    name = models.CharField(max_length=500, verbose_name="Наименование")
-    description = models.ForeignKey(
-        Description,
-        on_delete=models.CASCADE,
-        related_name="description_of_specifics",
-        verbose_name="Описание",
-    )
+    name = models.CharField(max_length=500, unique=True, verbose_name="Наименование")
+    description = models.TextField(verbose_name="Описание")
+
+    def __str__(self):
+        return self.name
+
+    class Meta:
+        abstract = True
 
 
 class Skill(Generalization):
