@@ -198,6 +198,7 @@ class Skill(Generalization):
 
 
 class Working(Generalization, StartAndEndDates, LinkToTheOriginal):
+    position = models.CharField(max_length=255, verbose_name="Должность")
     used_skills = models.ManyToManyField(
         Skill,
         blank=True,
