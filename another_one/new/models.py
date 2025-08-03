@@ -212,6 +212,20 @@ class LinkToTheOriginal(models.Model):
 
 
 class Skill(Generalization):
+    LEVEL_OF_OWNERSHIP = {
+        "JN": "Базовый",
+        "MD": "Средний",
+        "SN": "Продвинутый",
+    }
+
+    level = models.CharField(
+        max_length=2,
+        choices=LEVEL_OF_OWNERSHIP,
+        null=True,
+        blank=True,
+        verbose_name="Уровень владения навыком",
+    )
+    
     class Meta:
         verbose_name = "Навык"
         verbose_name_plural = "Навыки"
