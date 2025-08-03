@@ -1,4 +1,5 @@
 from django.contrib.auth.models import AbstractUser
+from django.core.exceptions import ValidationError
 from django.db import models
 
 
@@ -179,6 +180,25 @@ class Generalization(models.Model):
 class StartAndEndDates(models.Model):
     start_date = models.DateField(blank=True, null=True, verbose_name="Дата начала")
     end_date = models.DateField(blank=True, null=True, verbose_name="Дата конца")
+
+    def clean(self):
+        # Проверка, если указана дата окончания, то обязательно должна быть дата начала
+        if self.end_date is not None and self.start_date is None:
+            raise ValidationError({
+                'start_date': 'Дата начала обязательна, если указана дата окончания',
+                'end_date': 'Не может быть указана без даты начала',
+            })
+
+        # Проверка, дата окончания не раньше даты начала
+        if self.start_date and self.end_date:
+            if self.start_date > self.end_date:
+                raise ValidationError({
+                    'end_date': 'Дата окончания не может быть раньше даты начала',
+                })
+
+    def save(self, *args, **kwargs):
+        self.full_clean()
+        super().save(*args, **kwargs)
 
     class Meta:
         abstract = True
