@@ -167,6 +167,11 @@ class MyUser(AbstractUser):
 
 
 class Generalization(models.Model):
+    """
+    Абстрактная базовая модель, содержащая общее текстовое описание и наименование объекта.
+    Используется как родитель для моделей, описывающих сущности резюме.
+    (Навык, Рабочее место, Проект, Курс, Сертификат, Увлечения)
+    """
     name = models.CharField(max_length=500, unique=True, verbose_name="Наименование")
     description = models.TextField(verbose_name="Описание")
 
@@ -178,6 +183,10 @@ class Generalization(models.Model):
 
 
 class StartAndEndDates(models.Model):
+    """
+    Абстрактная модель, добавляющая поля начала и окончания действия чего-либо
+    (например, работы, проекта, курса), а также валидацию этих дат.
+    """
     start_date = models.DateField(blank=True, null=True, verbose_name="Дата начала")
     end_date = models.DateField(blank=True, null=True, verbose_name="Дата конца")
 
@@ -205,6 +214,10 @@ class StartAndEndDates(models.Model):
 
 
 class LinkToTheOriginal(models.Model):
+    """
+    Абстрактная модель, содержащая ссылку на внешний источник — оригинал объекта
+    (например, внешний проект, сертификат, сайт компании).
+    """
     link_to_the_original = models.URLField(blank=True, null=True, verbose_name="Ссылка на оригинал")
 
     class Meta:
@@ -212,6 +225,10 @@ class LinkToTheOriginal(models.Model):
 
 
 class Skill(Generalization):
+    """
+    Навык с уровнем владения, которым владеет кандидат.
+    Может быть связан с работами, курсами и проектами.
+    """
     LEVEL_OF_OWNERSHIP = {
         "JN": "Базовый",
         "MD": "Средний",
@@ -232,6 +249,10 @@ class Skill(Generalization):
 
 
 class Working(Generalization, StartAndEndDates, LinkToTheOriginal):
+    """
+    Опыт работы кандидата.
+    Содержит информацию о месте работы, периоде и используемых навыках.
+    """
     position = models.CharField(max_length=255, verbose_name="Должность")
     used_skills = models.ManyToManyField(
         Skill,
@@ -246,6 +267,10 @@ class Working(Generalization, StartAndEndDates, LinkToTheOriginal):
 
 
 class Project(Generalization, StartAndEndDates, LinkToTheOriginal):
+    """
+    Проект, выполненный кандидатом. Может быть связан с конкретным рабочим местом
+    и содержит навыки, использованные в проекте.
+    """
     used_skills = models.ManyToManyField(
         Skill,
         blank=True,
@@ -267,6 +292,10 @@ class Project(Generalization, StartAndEndDates, LinkToTheOriginal):
 
 
 class Course(Generalization, StartAndEndDates, LinkToTheOriginal):
+    """
+    Курс, пройденный кандидатом.
+    Может содержать информацию о полученных навыках.
+    """
     used_skills = models.ManyToManyField(
         Skill,
         blank=True,
@@ -280,6 +309,10 @@ class Course(Generalization, StartAndEndDates, LinkToTheOriginal):
 
 
 class Certificate(Generalization, LinkToTheOriginal):
+    """
+    Сертификат, подтверждающий завершение курса или достижение.
+    Связан с курсом (один к одному), может содержать изображение и дату получения.
+    """
     date = models.DateField(verbose_name="Дата получения")
     image = models.ImageField(
         "Изображение",
@@ -302,6 +335,10 @@ class Certificate(Generalization, LinkToTheOriginal):
 
 
 class Passion(Generalization):
+    """
+    Личное увлечение или интерес кандидата.
+    Не связано с профессиональной деятельностью, но помогает дополнить образ.
+    """
     class Meta:
         verbose_name = "Увлечение"
         verbose_name_plural = "Увлечения"
