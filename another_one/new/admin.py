@@ -8,6 +8,12 @@ from .models import (
     SupplementProfession,
     Organization,
     Language,
+    Skill,
+    Working,
+    Project,
+    Course,
+    Certificate,
+    Passion,
 )
 
 
@@ -22,3 +28,9 @@ admin.site.register(SupplementProfession)
 admin.site.register(Profession, ProfessionAdmin)
 admin.site.register(Organization)
 admin.site.register(Language)
+admin.site.register(Skill)
+admin.site.register(Working)
+admin.site.register(Project)
+admin.site.register(Course)
+admin.site.register(Certificate)
+admin.site.register(Passion)
