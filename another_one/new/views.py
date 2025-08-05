@@ -3,11 +3,17 @@ from django.core.mail import send_mail
 from django.shortcuts import render, redirect
 from django.urls import reverse_lazy
 from django.utils.decorators import method_decorator
-from django.views.generic import DetailView
+from django.views.generic import (
+    DetailView,
+    ListView,
+)
 from django.views.generic.edit import UpdateView
 
 from new.forms import UpdateIndividualForm
-from new.models import MyUser
+from new.models import (
+    MyUser,
+    Skill,
+)
 
 
 def main(request):
@@ -34,6 +40,20 @@ class UpdateIndividual(UpdateView):
 
 
 update_individual = UpdateIndividual.as_view()
+
+
+class ListOfSkills(ListView):
+    template_name = "new/list_of_skills.html"
+    model = Skill
+    context_object_name = "skills"
+
+    def get_context_data(self, **kwargs):
+        context = super().get_context_data(**kwargs)
+        context['i_am'] = MyUser.objects.get(id=1)
+        return context
+
+
+list_of_skills = ListOfSkills.as_view()
 
 
 def skills(request):
