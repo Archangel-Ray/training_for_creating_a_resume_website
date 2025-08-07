@@ -12,7 +12,7 @@
             <span class="subtitle">{{ skill.get_level_display }}</span>
         </h2>
         <div class="main_text">
-            {{ skill.description|truncatewords:20 }}
+            {{ skill.description|linebreaks|truncatewords:20 }}
         </div>
 
         {% if skill.courses.all %}

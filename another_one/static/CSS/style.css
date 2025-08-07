@@ -154,7 +154,7 @@ button:hover {
     bottom: -0.5em;
 }
 
-.main_text {
+.main_text p {
     text-align: justify;
     margin-bottom: 0.5em;
 }
@@ -166,7 +166,7 @@ button:hover {
     font-size: 0.8em;
 }
 
-.specifics p {
+.specifics > p {
     text-align: right;
     margin: 0;
     color: #122400de;
