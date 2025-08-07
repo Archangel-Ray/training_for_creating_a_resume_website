@@ -1,6 +1,34 @@
 {%extends 'base.html'%}
-{% block title %}Основная информация{% endblock %}
+{% block title %}Навыки Сергея Савельева{% endblock %}
 {% block body %}
-здесь будут перечисляться навыки, портфолио, образование, сертификаты.<hr>
-{{ skills }}
+<div class="name_user">
+    Навыки
+    <div class="under_name_user">{{ skills.all|join:" | " }}</div>
+</div>
+{% for skill in skills%}
+    <div class="specifics">
+        <h2>
+            {{ skill.name }}
+            <span class="subtitle">{{ skill.get_level_display }}</span>
+        </h2>
+        <div class="main_text">
+            {{ skill.description|truncatewords:20 }}
+        </div>
+
+        {% if skill.courses.all %}
+            <h4>где я этому научился:</h4>
+            <p>{{ skill.courses.all|join:", " }}</p>
+        {% endif %}
+
+        {% if skill.projects.all %}
+            <h4>проекты в которых я это применил:</h4>
+            <p>{{ skill.projects.all|join:", " }}</p>
+        {% endif %}
+
+        {% if skill.i_worked_for.all %}
+            <h4>отработано на рабочих местах:</h4>
+            <p>{{ skill.i_worked_for.all|join:", " }}</p>
+        {% endif %}
+    </div>
+{% endfor%}
 {% endblock body %}
