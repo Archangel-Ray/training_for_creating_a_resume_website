@@ -157,6 +157,7 @@ button:hover {
 .main_text p {
     text-align: justify;
     margin-bottom: 0.5em;
+    text-indent: 1.5em;
 }
 
 .specifics h4 {
