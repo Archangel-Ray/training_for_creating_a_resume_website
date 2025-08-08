@@ -3,7 +3,11 @@
 {% block body %}
 <div class="name_user">
     Навыки
-    <div class="under_name_user">{{ skills.all|join:" | " }}</div>
+    <div class="under_name_user">
+        {% for skill in skills %}
+        <a href="{% url 'отобразить конкретный навык' skill.id %}">{{ skill.name }}</a> |
+        {% endfor %}
+    </div>
 </div>
 {% for skill in skills%}
     <div class="specifics">
@@ -13,6 +17,7 @@
         </h2>
         <div class="main_text">
             {{ skill.description|linebreaks|truncatewords:20 }}
+            <a href="{% url 'отобразить конкретный навык' skill.id %}">читать дальше</a>
         </div>
 
         {% if skill.courses.all %}
