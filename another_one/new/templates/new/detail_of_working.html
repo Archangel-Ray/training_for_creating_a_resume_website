@@ -9,8 +9,8 @@
 </div>
 <div class="specifics">
     <p>
-        я работал здесь с
-        {{working.start_date}}
+        я работал здесь {{working.period_length_display }}<br>
+        с {{working.start_date}}
         по
         {% if working.end_date is none %}
             настоящее время
