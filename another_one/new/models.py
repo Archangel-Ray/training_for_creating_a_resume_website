@@ -200,7 +200,10 @@ class StartAndEndDates(models.Model):
             })
 
         # Проверка, дата окончания не раньше даты начала
-        if self.start_date and self.end_date:
+        if self.start_date:
+            # Если даты окончания нет — проверка не нужна
+            if self.end_date is None:
+                return
             if self.start_date > self.end_date:
                 raise ValidationError({
                     'end_date': 'Дата окончания не может быть раньше даты начала',
