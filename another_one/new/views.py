@@ -16,6 +16,13 @@ from new.models import (
 )
 
 
+class GetContext:
+    def get_context_data(self, **kwargs):
+        context = super().get_context_data(**kwargs)
+        context['i_am'] = MyUser.objects.get(id=1)
+        return context
+
+
 def main(request):
     return render(request, 'new/basic_information.html')
 
@@ -42,29 +49,19 @@ class UpdateIndividual(UpdateView):
 update_individual = UpdateIndividual.as_view()
 
 
-class ListOfSkills(ListView):
+class ListOfSkills(GetContext, ListView):
     template_name = "new/list_of_skills.html"
     model = Skill
     context_object_name = "skills"
-
-    def get_context_data(self, **kwargs):
-        context = super().get_context_data(**kwargs)
-        context['i_am'] = MyUser.objects.get(id=1)
-        return context
 
 
 list_of_skills = ListOfSkills.as_view()
 
 
-class DetailedSkill(DetailView):
+class DetailedSkill(GetContext, DetailView):
     template_name = "new/detail_of_skill.html"
     model = Skill
     context_object_name = "skill"
-
-    def get_context_data(self, **kwargs):
-        context = super().get_context_data(**kwargs)
-        context['i_am'] = MyUser.objects.get(id=1)
-        return context
 
 
 detailed_skill = DetailedSkill.as_view()
