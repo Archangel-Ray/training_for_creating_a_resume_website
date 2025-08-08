@@ -1,3 +1,4 @@
+from datetime import date
 from typing import Optional
 
 from dateutil.relativedelta import relativedelta
@@ -217,6 +218,44 @@ class StartAndEndDates(models.Model):
     def save(self, *args, **kwargs):
         self.full_clean()
         super().save(*args, **kwargs)
+
+    @property
+    def period_length_display(self):
+        """Возвращает период от начала до завершения в удобочитаемом виде"""
+        if not self.start_date:
+            return "—"
+
+        end = self.end_date or date.today()
+        delta = relativedelta(end, self.start_date)
+
+        parts = []
+
+        if delta.years:
+            parts.append(f"{delta.years} {self._declension(delta.years, 'год', 'года', 'лет')}")
+            if delta.months:
+                parts.append(f"{delta.months} {self._declension(delta.months, 'месяц', 'месяца', 'месяцев')}")
+            if delta.days:
+                parts.append(f"{delta.days} {self._declension(delta.days, 'день', 'дня', 'дней')}")
+
+        elif delta.months:
+            parts.append(f"{delta.months} {self._declension(delta.months, 'месяц', 'месяца', 'месяцев')}")
+            if delta.days:
+                parts.append(f"{delta.days} {self._declension(delta.days, 'день', 'дня', 'дней')}")
+
+        else:
+            parts.append(f"{delta.days} {self._declension(delta.days, 'день', 'дня', 'дней')}")
+
+        return " ".join(parts)
+
+    @staticmethod
+    def _declension(number, form1, form2, form5):
+        """Подбирает правильное склонение"""
+        if number % 10 == 1 and number % 100 != 11:
+            return form1
+        elif 2 <= number % 10 <= 4 and (number % 100 < 10 or number % 100 >= 20):
+            return form2
+        else:
+            return form5
 
     class Meta:
         abstract = True
