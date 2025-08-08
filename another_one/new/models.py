@@ -1,3 +1,5 @@
+from typing import Optional
+
 from dateutil.relativedelta import relativedelta
 from django.contrib.auth.models import AbstractUser
 from django.core.exceptions import ValidationError
@@ -190,6 +192,9 @@ class StartAndEndDates(models.Model):
     """
     start_date = models.DateField(blank=True, null=True, verbose_name="Дата начала")
     end_date = models.DateField(blank=True, null=True, verbose_name="Дата конца")
+
+    start_date: Optional[date]
+    end_date: Optional[date]
 
     def clean(self):
         # Проверка, если указана дата окончания, то обязательно должна быть дата начала
