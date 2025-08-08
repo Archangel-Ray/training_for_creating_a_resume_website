@@ -56,6 +56,20 @@ class ListOfSkills(ListView):
 list_of_skills = ListOfSkills.as_view()
 
 
+class DetailedSkill(DetailView):
+    template_name = "new/detail_of_skill.html"
+    model = Skill
+    context_object_name = "skill"
+
+    def get_context_data(self, **kwargs):
+        context = super().get_context_data(**kwargs)
+        context['i_am'] = MyUser.objects.get(id=1)
+        return context
+
+
+detailed_skill = DetailedSkill.as_view()
+
+
 def skills(request):
     context = {
         "i_am": MyUser.objects.get(id=1),
