@@ -77,6 +77,15 @@ class ListOfWorking(GetContext, ListView):
 list_of_working = ListOfWorking.as_view()
 
 
+class DetailedOfWorking(GetContext, DetailView):
+    template_name = "new/detail_of_working.html"
+    model = Working
+    context_object_name = "working"
+
+
+detailed_of_working = DetailedOfWorking.as_view()
+
+
 def skills(request):
     context = {
         "i_am": MyUser.objects.get(id=1),
