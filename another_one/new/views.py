@@ -13,6 +13,7 @@ from new.forms import UpdateIndividualForm
 from new.models import (
     MyUser,
     Skill,
+    Working,
 )
 
 
@@ -65,6 +66,15 @@ class DetailedSkill(GetContext, DetailView):
 
 
 detailed_skill = DetailedSkill.as_view()
+
+
+class ListOfWorking(GetContext, ListView):
+    template_name = "new/list_of_working.html"
+    model = Working
+    context_object_name = "workings"
+
+
+list_of_working = ListOfWorking.as_view()
 
 
 def skills(request):
