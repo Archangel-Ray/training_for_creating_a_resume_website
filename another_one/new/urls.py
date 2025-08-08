@@ -11,6 +11,7 @@ from .views import (
     sending_the_message,
     detailed_skill,
     list_of_working,
+    detailed_of_working,
 )
 
 urlpatterns = [
@@ -20,6 +21,7 @@ urlpatterns = [
     path('1/data/skills', list_of_skills, name="отобразить навыки"),
     path('1/data/skills/<pk>', detailed_skill, name="отобразить конкретный навык"),
     path('1/data/working', list_of_working, name="отобразить рабочие места"),
+    path('1/data/working/<pk>', detailed_of_working, name="отобразить конкретное рабочее место"),
     path('1/data/all', skills, name="отобразить всё"),
     path('sending_the_message', sending_the_message, name="отправка сообщения с сайта мне"),
     path('watsapp', transition_to_watsapp, name="переход в ВатсАпп"),
