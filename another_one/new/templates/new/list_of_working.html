@@ -5,7 +5,7 @@
     Где я работал
     <div class="under_name_user">
         {% for working in workings %}
-            {{ working.name }} |
+        <a href="{% url 'отобразить конкретное рабочее место' working.id %}">{{ working.name }}</a> |
         {% endfor %}
     </div>
 </div>
@@ -15,9 +15,9 @@
             {{ working.name }}<br>
             <span class="under_name_user">{{ working.position }}</span>
         </h2>
-        <div class="main_text">
+        <a href="{% url 'отобразить конкретное рабочее место' working.id %}"><div class="main_text">
             {{ working.description|linebreaks|truncatewords:20 }}
-        </div>
+        </div></a>
 
         {% if working.used_skills.all %}
             <h4>навыки отработанные на этом месте:</h4>
