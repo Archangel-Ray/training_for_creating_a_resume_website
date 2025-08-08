@@ -15,10 +15,9 @@
             {{ skill.name }}
             <span class="subtitle">{{ skill.get_level_display }}</span>
         </h2>
-        <div class="main_text">
+        <a href="{% url 'отобразить конкретный навык' skill.id %}"><div class="main_text">
             {{ skill.description|linebreaks|truncatewords:20 }}
-            <a href="{% url 'отобразить конкретный навык' skill.id %}">читать дальше</a>
-        </div>
+        </div></a>
 
         {% if skill.courses.all %}
             <h4>где я этому научился:</h4>
