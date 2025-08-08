@@ -1,0 +1,35 @@
+{%extends 'base.html'%}
+{% block title %}Рабочие места Сергея Савельева{% endblock %}
+{% block body %}
+<div class="name_user">
+    <div class="under_name_user">
+        {{ working.name }}<br>
+        <span class="subtitle">{{ working.position }}</span>
+    </div>
+</div>
+<div class="specifics">
+    <p>
+        я работал здесь с
+        {{working.start_date}}
+        по
+        {% if working.end_date is none %}
+            текущее время
+        {% else %}
+            {{working.end_date}}
+        {% endif %}
+    </p>
+    <div class="main_text">
+        {{ working.description|linebreaks }}
+    </div>
+
+    {% if working.used_skills.all %}
+        <h4>навыки отработанные на этом месте:</h4>
+        <p>{{ working.used_skills.all|join:", " }}</p>
+    {% endif %}
+
+    {% if working.projects.all %}
+        <h4>проекты сделанные на этом месте:</h4>
+        <p>{{ working.projects.all|join:", " }}</p>
+    {% endif %}
+</div>
+{% endblock body %}
