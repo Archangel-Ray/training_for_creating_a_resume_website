@@ -154,6 +154,16 @@ button:hover {
     bottom: -0.5em;
 }
 
+.projects {
+    font-weight: normal;
+    display: block;
+}
+
+.subtitle a {
+    color: #a4aa8f;
+    text-shadow: 0.04em 0.04em 0.15em #12240050;
+}
+
 .main_text p {
     text-align: justify;
     margin-bottom: 0.5em;
