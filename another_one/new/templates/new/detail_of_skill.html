@@ -13,17 +13,17 @@
     </div>
 
     {% if skill.courses.all %}
-        <h4>где я этому научился:</h4>
+        <h4>где я приобрёл этот навык:</h4>
         <p>{{ skill.courses.all|join:", " }}</p>
     {% endif %}
 
     {% if skill.projects.all %}
-        <h4>проекты в которых я это применил:</h4>
+        <h4>проекты в которых я этот навык применил:</h4>
         <p>{{ skill.projects.all|join:", " }}</p>
     {% endif %}
 
     {% if skill.i_worked_for.all %}
-        <h4>отработано на рабочих местах:</h4>
+        <h4>отработал этот навык на рабочих местах:</h4>
         <p>{{ skill.i_worked_for.all|join:", " }}</p>
     {% endif %}
 </div>
