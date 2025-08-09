@@ -14,6 +14,7 @@ from new.models import (
     MyUser,
     Skill,
     Working,
+    Project,
 )
 
 
@@ -84,6 +85,15 @@ class DetailedOfWorking(GetContext, DetailView):
 
 
 detailed_of_working = DetailedOfWorking.as_view()
+
+
+class ListOfProjects(GetContext, ListView):
+    template_name = "new/list_of_projects.html"
+    model = Project
+    context_object_name = "projects"
+
+
+list_of_projects = ListOfProjects.as_view()
 
 
 def skills(request):
