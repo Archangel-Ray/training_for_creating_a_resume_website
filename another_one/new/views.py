@@ -74,6 +74,10 @@ class ListOfWorking(GetContext, ListView):
     model = Working
     context_object_name = "workings"
 
+    def get_queryset(self):
+        queryset = Working.objects.order_by('-start_date')
+        return queryset
+
 
 list_of_working = ListOfWorking.as_view()
 
@@ -91,6 +95,10 @@ class ListOfProjects(GetContext, ListView):
     template_name = "new/list_of_projects.html"
     model = Project
     context_object_name = "projects"
+
+    def get_queryset(self):
+        queryset = Project.objects.order_by('-start_date')
+        return queryset
 
 
 list_of_projects = ListOfProjects.as_view()
