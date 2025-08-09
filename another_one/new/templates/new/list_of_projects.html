@@ -1,0 +1,29 @@
+{%extends 'base.html'%}
+{% block title %}Проекты Сергея Савельева{% endblock %}
+{% block body %}
+<div class="name_user">
+    Проекты <span class="subtitle projects" style="bottom: 0.4em;">над которыми я трудился</span>
+    <div class="under_name_user"> |
+        {% for project in projects %}
+            <a href="{% url 'отобразить конкретный проект' project.id %}">{{ project }}</a> |
+        {% endfor %}
+    </div>
+</div>
+{% for project in projects %}
+    <div class="specifics">
+        <h2>
+            {{ project }}
+            {% if project.link_to_the_original %}
+            <span class="subtitle projects">
+            <a href="{{ project.link_to_the_original }}" target="_blank">
+                Вы можете посмотреть на этот проект
+            </a>
+            </span>
+            {% endif %}
+        </h2>
+        <a href="{% url 'отобразить конкретный проект' project.id %}"><div class="main_text">
+            {{ project.description|linebreaks|truncatewords:20 }}
+        </div></a>
+    </div>
+{% endfor%}
+{% endblock body %}
