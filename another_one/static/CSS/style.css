@@ -163,7 +163,7 @@ button:hover {
 .specifics h4 {
     border: none;
     text-align: left;
-    margin: 0;
+    margin-bottom: 0;
     font-size: 0.8em;
 }
 
