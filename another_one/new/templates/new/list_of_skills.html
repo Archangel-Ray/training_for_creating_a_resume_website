@@ -2,7 +2,7 @@
 {% block title %}Навыки Сергея Савельева{% endblock %}
 {% block body %}
 <div class="name_user">
-    Навыки
+    Мои навыки
     <div class="under_name_user">
         {% for skill in skills %}
         <a href="{% url 'отобразить конкретный навык' skill.id %}">{{ skill.name }}</a> |
@@ -18,21 +18,6 @@
         <a href="{% url 'отобразить конкретный навык' skill.id %}"><div class="main_text">
             {{ skill.description|linebreaks|truncatewords:20 }}
         </div></a>
-
-        {% if skill.courses.all %}
-            <h4>где я этому научился:</h4>
-            <p>{{ skill.courses.all|join:", " }}</p>
-        {% endif %}
-
-        {% if skill.projects.all %}
-            <h4>проекты в которых я это применил:</h4>
-            <p>{{ skill.projects.all|join:", " }}</p>
-        {% endif %}
-
-        {% if skill.i_worked_for.all %}
-            <h4>отработано на рабочих местах:</h4>
-            <p>{{ skill.i_worked_for.all|join:", " }}</p>
-        {% endif %}
     </div>
 {% endfor%}
 {% endblock body %}
