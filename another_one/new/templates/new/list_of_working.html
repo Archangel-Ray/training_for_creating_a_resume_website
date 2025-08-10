@@ -3,7 +3,7 @@
 {% block body %}
 <div class="name_user">
     Где я работал
-    <div class="under_name_user">
+    <div class="under_menu">|
         {% for working in workings %}
         <a href="{% url 'отобразить конкретное рабочее место' working.id %}">{{ working.name }}</a> |
         {% endfor %}
@@ -13,7 +13,7 @@
     <div class="specifics">
         <h2>
             {{ working.name }}
-            <span class="under_name_user" style="text-transform: none;display: block;">{{ working.position }}</span>
+            <span class="subtitle">{{ working.position }}</span>
         </h2>
         <a href="{% url 'отобразить конкретное рабочее место' working.id %}"><div class="main_text">
             {{ working.description|linebreaks|truncatewords:20 }}

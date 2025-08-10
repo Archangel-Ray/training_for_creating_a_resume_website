@@ -116,8 +116,13 @@ button:hover {
 
 .under_name_user {
     color: #dfecdc;
-    font-size: 0.5em;
-    text-transform: uppercase;
+    font-size: 0.7em;
+}
+
+.under_menu {
+    font-size: 0.3em;
+    font-weight: normal;
+    padding: 0 2em;
 }
 
 .about_me p {
@@ -146,17 +151,13 @@ button:hover {
 }
 
 .subtitle {
+    display: block;
+    font-weight: normal;
     color: #dfecdc;
-    font-size: 0.7em;
-    text-transform: lowercase;
+    font-size: 0.6em;
     font-style: oblique;
     position: relative;
     bottom: -0.5em;
-}
-
-.projects {
-    font-weight: normal;
-    display: block;
 }
 
 .subtitle a {
@@ -178,6 +179,7 @@ button:hover {
 }
 
 .specifics > p {
+    padding-left: 6em;
     text-align: right;
     margin: 0;
     color: #122400de;

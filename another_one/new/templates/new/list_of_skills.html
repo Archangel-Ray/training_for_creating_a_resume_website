@@ -3,7 +3,7 @@
 {% block body %}
 <div class="name_user">
     Мои навыки
-    <div class="under_name_user">
+    <div class="under_menu">|
         {% for skill in skills %}
         <a href="{% url 'отобразить конкретный навык' skill.id %}">{{ skill.name }}</a> |
         {% endfor %}

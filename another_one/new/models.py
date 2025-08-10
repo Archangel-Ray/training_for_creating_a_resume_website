@@ -278,9 +278,9 @@ class Skill(Generalization):
     Может быть связан с работами, курсами и проектами.
     """
     LEVEL_OF_OWNERSHIP = {
-        "JN": "Базовый",
-        "MD": "Средний",
-        "SN": "Продвинутый",
+        "JN": "базовый",
+        "MD": "средний",
+        "SN": "продвинутый",
     }
 
     level = models.CharField(
