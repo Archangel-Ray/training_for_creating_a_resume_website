@@ -104,6 +104,15 @@ class ListOfProjects(GetContext, ListView):
 list_of_projects = ListOfProjects.as_view()
 
 
+class DetailedOfProject(GetContext, DetailView):
+    template_name = "new/detailed_of_project.html"
+    model = Project
+    context_object_name = "project"
+
+
+detailed_of_project = DetailedOfProject.as_view()
+
+
 def skills(request):
     context = {
         "i_am": MyUser.objects.get(id=1),
