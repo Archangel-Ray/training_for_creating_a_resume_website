@@ -61,7 +61,7 @@ list_of_skills = ListOfSkills.as_view()
 
 
 class DetailedSkill(GetContext, DetailView):
-    template_name = "new/detail_of_skill.html"
+    template_name = "new/detailed_of_skill.html"
     model = Skill
     context_object_name = "skill"
 
@@ -83,7 +83,7 @@ list_of_working = ListOfWorking.as_view()
 
 
 class DetailedOfWorking(GetContext, DetailView):
-    template_name = "new/detail_of_working.html"
+    template_name = "new/detailed_of_working.html"
     model = Working
     context_object_name = "working"
 
