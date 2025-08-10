@@ -13,7 +13,13 @@
     <div class="specifics">
         <h2>
             {{ skill.name }}
-            <span class="subtitle">{{ skill.get_level_display }}</span>
+            <span class="subtitle">
+                {% if skill.level is none %}
+                    не отработан
+                {% else %}
+                    {{ skill.get_level_display }}
+                {% endif %}
+            </span>
         </h2>
         <a href="{% url 'отобразить конкретный навык' skill.id %}"><div class="main_text">
             {{ skill.description|linebreaks|truncatewords:20 }}

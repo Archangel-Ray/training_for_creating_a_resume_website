@@ -4,7 +4,13 @@
 <div class="name_user">
     <div class="under_name_user">
         {{ skill.name }}
-        <span class="subtitle">{{ skill.get_level_display }}</span>
+        <span class="subtitle">
+            {% if skill.level is none %}
+                не отработан
+            {% else %}
+                {{ skill.get_level_display }}
+            {% endif %}
+        </span>
     </div>
 </div>
 <div class="specifics">
