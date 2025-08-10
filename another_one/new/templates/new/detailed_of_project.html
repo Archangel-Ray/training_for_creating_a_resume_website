@@ -1,0 +1,41 @@
+{%extends 'base.html'%}
+{% block title %}Проекты Сергея Савельева{% endblock %}
+{% block body %}
+<div class="name_user">
+    <div class="under_name_user">
+        {{ project.name }}
+        {% if project.link_to_the_original %}
+            <span class="subtitle projects">
+            <a href="{{ project.link_to_the_original }}" target="_blank">
+                посмотреть на проект
+            </a>
+            </span>
+        {% endif %}
+    </div>
+</div>
+<div class="specifics">
+    <p>
+        я трудился над этим проектом {{project.period_length_display }}<br>
+        с {{project.start_date}}
+        по
+        {% if project.end_date is none %}
+            настоящее время
+        {% else %}
+            {{project.end_date}}
+        {% endif %}
+    </p>
+    <div class="main_text">
+        {{ project.description|linebreaks }}
+    </div>
+
+    {% if project.used_skills.all %}
+        <h4>навыки отработанные на этом проекте:</h4>
+        <p>{{ project.used_skills.all|join:", " }}</p>
+    {% endif %}
+
+    {% if project.job %}
+        <h4>рабочее место этого проекта:</h4>
+        <p>{{ project.job }}</p>
+    {% endif %}
+</div>
+{% endblock body %}
