@@ -65,6 +65,11 @@ class DetailedSkill(GetContext, DetailView):
     model = Skill
     context_object_name = "skill"
 
+    def get_context_data(self, **kwargs):
+        context = super().get_context_data(**kwargs)
+        context["menu"] = Skill.objects.exclude(pk=self.object.pk)
+        return context
+
 
 detailed_skill = DetailedSkill.as_view()
 
