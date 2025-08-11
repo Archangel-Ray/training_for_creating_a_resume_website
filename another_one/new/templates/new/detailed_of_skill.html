@@ -6,9 +6,9 @@
         {{ skill.name }}
         <span class="subtitle">
             {% if skill.level is none %}
-                не отработан
+                навык не отработан
             {% else %}
-                {{ skill.get_level_display }}
+                {{ skill.get_level_display }} уровень
             {% endif %}
         </span>
     </div>
