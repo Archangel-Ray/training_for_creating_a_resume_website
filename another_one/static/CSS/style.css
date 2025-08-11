@@ -97,7 +97,7 @@ button:hover {
 }
 
 .basic_inf {
-    padding: 10px 20px;
+    padding: 0 20px;
 }
 
 .name_user {
@@ -112,6 +112,26 @@ button:hover {
     text-shadow: 0.05em 0.05em 0.2em #023000;
     background: #12440e21;
     border-radius: 15px;
+}
+
+.upper_menu {
+    background: #12440e21;
+    text-align: center;
+    padding: 5px;
+    margin: 0 15px;
+    border-radius: 0 0 15px 15px;
+}
+
+.upper_menu a {
+    color: white;
+    padding: 0 0.1em;
+}
+
+.upper_menu a:hover {
+    font-weight: normal;
+    text-shadow: 0.05em 0.05em 0.2em #024400;
+    background: #12440e21;
+    border-radius: 4px;
 }
 
 .under_name_user {
