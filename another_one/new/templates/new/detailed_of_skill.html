@@ -20,17 +20,29 @@
 
     {% if skill.courses.all %}
         <h4>где я приобрёл этот навык:</h4>
-        <p>{{ skill.courses.all|join:", " }}</p>
+        <p>
+            {% for course in skill.courses.all %}
+            <a href="{% url 'отобразить конкретный курс' course.id %}">{{ course }}</a>,
+            {% endfor %}
+        </p>
     {% endif %}
 
     {% if skill.projects.all %}
         <h4>проекты в которых я этот навык применил:</h4>
-        <p>{{ skill.projects.all|join:", " }}</p>
+        <p>
+            {% for project in skill.projects.all %}
+            <a href="{% url 'отобразить конкретный проект' project.id %}">{{ project }}</a>,
+            {% endfor %}
+        </p>
     {% endif %}
 
     {% if skill.i_worked_for.all %}
         <h4>отработал этот навык на рабочих местах:</h4>
-        <p>{{ skill.i_worked_for.all|join:", " }}</p>
+        <p>
+            {% for worked in skill.i_worked_for.all %}
+            <a href="{% url 'отобразить конкретное рабочее место' worked.id %}">{{ worked }}</a>,
+            {% endfor %}
+        </p>
     {% endif %}
 </div>
 {% endblock body %}

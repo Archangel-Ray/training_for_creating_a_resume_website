@@ -24,12 +24,20 @@
 
     {% if working.used_skills.all %}
         <h4>навыки отработанные на этом месте:</h4>
-        <p>{{ working.used_skills.all|join:", " }}</p>
+        <p>
+            {% for skill in working.used_skills.all %}
+            <a href="{% url 'отобразить конкретный навык' skill.id %}">{{ skill }}</a>,
+            {% endfor %}
+        </p>
     {% endif %}
 
     {% if working.projects.all %}
         <h4>проекты сделанные на этом месте:</h4>
-        <p>{{ working.projects.all|join:", " }}</p>
+        <p>
+            {% for project in working.projects.all %}
+            <a href="{% url 'отобразить конкретный проект' project.id %}">{{ project }}</a>,
+            {% endfor %}
+        </p>
     {% endif %}
 </div>
 {% endblock body %}
