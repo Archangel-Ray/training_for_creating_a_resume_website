@@ -1,9 +1,9 @@
 {%extends 'base.html'%}
-{% block title %}Проекты Сергея Савельева{% endblock %}
+{% block title %}{{ project }} Сергея Савельева{% endblock %}
 {% block body %}
 <div class="name_user">
     <div class="under_name_user">
-        {{ project.name }}
+        {{ project }}
         {% if project.link_to_the_original %}
             <span class="subtitle">
             <a href="{{ project.link_to_the_original }}" target="_blank">
