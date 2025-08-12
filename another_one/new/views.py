@@ -119,6 +119,11 @@ class DetailedOfProject(GetContext, DetailView):
     model = Project
     context_object_name = "project"
 
+    def get_context_data(self, **kwargs):
+        context = super().get_context_data(**kwargs)
+        context["menu"] = Project.objects.exclude(pk=self.object.pk)
+        return context
+
 
 detailed_of_project = DetailedOfProject.as_view()
 
