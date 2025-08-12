@@ -1,6 +1,13 @@
 {%extends 'base.html'%}
 {% block title %}{{ project }} Сергея Савельева{% endblock %}
 {% block body %}
+
+<div class="upper_menu">
+    {% for choice in menu %}
+        <a href="{% url 'отобразить конкретный проект' choice.id %}">{{ choice }}</a> |
+    {% endfor %}
+</div>
+
 <div class="name_user">
     <div class="under_name_user">
         {{ project }}
