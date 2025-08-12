@@ -92,6 +92,11 @@ class DetailedOfWorking(GetContext, DetailView):
     model = Working
     context_object_name = "working"
 
+    def get_context_data(self, **kwargs):
+        context = super().get_context_data(**kwargs)
+        context["menu"] = Working.objects.exclude(pk=self.object.pk)
+        return context
+
 
 detailed_of_working = DetailedOfWorking.as_view()
 
