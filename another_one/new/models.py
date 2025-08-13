@@ -8,6 +8,10 @@ from django.db import models
 
 
 class CountryOfConsignment(models.Model):
+    """
+    Модель для списка стран с картинкой государственного флага.
+    Страна будет выбираться пользователем в поле гражданство.
+    """
     name = models.CharField(max_length=100, unique=True, verbose_name="Название")
     state_flag = models.ImageField("Государственный флаг", upload_to="flag/", null=True, blank=True)
 
@@ -21,6 +25,9 @@ class CountryOfConsignment(models.Model):
 
 
 class City(models.Model):
+    """
+    Модель для списка городов. Город будет выбираться пользователем.
+    """
     name = models.CharField(max_length=100, unique=True, verbose_name="Название")
 
     class Meta:
@@ -33,6 +40,11 @@ class City(models.Model):
 
 
 class SupplementProfession(models.Model):
+    """
+    Специализации профессий.
+    Модель недоработана. Необходимо сделать так чтоб пользователь мог выбрать несколько специализаций
+    определённой профессии. Специализации должны отображаться соответственно выбранной профессии.
+    """
     name = models.CharField(max_length=100, unique=True, verbose_name="Наименование")
 
     class Meta:
@@ -45,6 +57,10 @@ class SupplementProfession(models.Model):
 
 
 class Profession(models.Model):
+    """
+    Модель для списка профессий. К профессии можно прикрепить несколько специализаций.
+    Профессия будет выбираться пользователем.
+    """
     name = models.CharField(max_length=100, unique=True, verbose_name="Название")
     supplement_the_profession_of_the_user = models.ManyToManyField(
         SupplementProfession,
@@ -61,6 +77,11 @@ class Profession(models.Model):
 
 
 class Organization(models.Model):
+    """
+    Модель для списка организаций в которой работает пользователь.
+    Организация имеет название и город месторасположения.
+    ... Надо подумать, делать ли связь с полем "текущее место" работы в моём резюме.
+    """
     name = models.CharField(max_length=100, unique=True, verbose_name="Название")
     city = models.ForeignKey(City, on_delete=models.SET_NULL, null=True, blank=True, verbose_name="Город")
 
@@ -74,6 +95,11 @@ class Organization(models.Model):
 
 
 class Language(models.Model):
+    """
+    Модель для списка иностранных языков. Для определения знания языков пользователем.
+    ... Надо подумать. Как сделать так чтоб был список без определения уровня.
+    ... а уровень давался выбранному языку у каждого пользователя.
+    """
     LANGUAGE_LEVEL = {
         "A1": "начальный",
         "A2": "элементарный",
@@ -101,6 +127,31 @@ class Language(models.Model):
 
 
 class MyUser(AbstractUser):
+    """
+    Расширенная модель пользователя.
+    Дополнена полями для хранения личной, профессиональной и контактной информации:
+        - Личные данные:
+            * photo — фотография пользователя.
+            * biological_sex — пол (женский, мужской).
+            * patronymic — отчество.
+            * birthday — дата рождения.
+            * citizenship — гражданство (связь с моделью CountryOfConsignment).
+            * city — город проживания (связь с моделью City).
+        - Профессиональная информация:
+            * profession — основная профессия (связь с моделью Profession).
+            * specialization_professions — дополнительные специализации (M2M с SupplementProfession).
+            * the_level_of_professionalism — уровень профессионализма (от "ученик" до "супер-профессионал").
+            * job — текущее место работы (связь с моделью Organization).
+        - Языковые компетенции:
+            * languages — знание иностранных языков (M2M с моделью Language).
+        - Персональное описание:
+            * motto — личный девиз.
+            * about_me — свободное текстовое описание "Обо мне".
+
+    Константы:
+        PROFESSIONAL_LEVELS — справочник уровней профессионализма.
+        BIOLOGICAL_SEX — справочник полов.
+    """
     PROFESSIONAL_LEVELS = {
         "": "— Нет никакого —",
         "LR": "ученик",
