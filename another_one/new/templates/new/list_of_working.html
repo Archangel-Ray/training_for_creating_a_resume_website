@@ -18,6 +18,11 @@
         <a href="{% url 'отобразить конкретное рабочее место' working.id %}"><div class="main_text">
             {{ working.description|linebreaks|truncatewords:20 }}
         </div></a>
+        <p>
+            {% if working.start_date is not none %}
+                я работал здесь {{working.period_length_display }}
+            {% endif %}
+        </p>
     </div>
 {% endfor%}
 {% endblock body %}
