@@ -14,6 +14,7 @@ from .models import (
     Course,
     Certificate,
     Passion,
+    DeveloperOfTheCourse,
 )
 
 
@@ -34,3 +35,4 @@ admin.site.register(Project)
 admin.site.register(Course)
 admin.site.register(Certificate)
 admin.site.register(Passion)
+admin.site.register(DeveloperOfTheCourse)
