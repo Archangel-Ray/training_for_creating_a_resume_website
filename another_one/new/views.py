@@ -1,5 +1,6 @@
 from django.contrib.auth.decorators import login_required
 from django.core.mail import send_mail
+from django.db.models import F
 from django.shortcuts import render, redirect
 from django.urls import reverse_lazy
 from django.utils.decorators import method_decorator
@@ -80,7 +81,7 @@ class ListOfWorking(GetContext, ListView):
     context_object_name = "workings"
 
     def get_queryset(self):
-        queryset = Working.objects.order_by('-start_date')
+        queryset = Working.objects.order_by(F('end_date').desc(nulls_first=True))
         return queryset
 
 
@@ -107,7 +108,7 @@ class ListOfProjects(GetContext, ListView):
     context_object_name = "projects"
 
     def get_queryset(self):
-        queryset = Project.objects.order_by('-start_date')
+        queryset = Project.objects.order_by(F('end_date').desc(nulls_first=True))
         return queryset
 
 
