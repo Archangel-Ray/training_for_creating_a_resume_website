@@ -15,16 +15,18 @@
     </div>
 </div>
 <div class="specifics">
-    <p>
-        я работал здесь {{working.period_length_display }}<br>
-        с {{working.start_date}}
-        по
-        {% if working.end_date is none %}
-            настоящее время
-        {% else %}
-            {{working.end_date}}
-        {% endif %}
-    </p>
+    {% if working.start_date is not none %}
+        <p>я работал здесь {{working.period_length_display }}</p>
+        <p>
+            с {{working.start_date}}
+            по
+            {% if working.end_date is none %}
+                настоящее время
+            {% else %}
+                {{working.end_date}}
+            {% endif %}
+        </p>
+    {% endif %}
     <div class="main_text">
         {{ working.description|linebreaks }}
     </div>
