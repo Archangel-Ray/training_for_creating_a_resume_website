@@ -391,7 +391,9 @@ class Project(Generalization, StartAndEndDates, LinkToTheOriginal):
 
 
 class DeveloperOfTheCourse(Generalization, LinkToTheOriginal):
-    pass
+    class Meta:
+        verbose_name = "Автор курса"
+        verbose_name_plural = "Авторы курсов"
 
 
 class Course(Generalization, StartAndEndDates, LinkToTheOriginal):
