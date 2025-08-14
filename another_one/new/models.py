@@ -390,11 +390,22 @@ class Project(Generalization, StartAndEndDates, LinkToTheOriginal):
         verbose_name_plural = "Проекты"
 
 
+class DeveloperOfTheCourse(Generalization, LinkToTheOriginal):
+    pass
+
+
 class Course(Generalization, StartAndEndDates, LinkToTheOriginal):
     """
     Курс, пройденный кандидатом.
     Может содержать информацию о полученных навыках.
     """
+    the_author_is_a_host = models.ForeignKey(
+        DeveloperOfTheCourse,
+        on_delete=models.SET_NULL,
+        verbose_name="Автор или разработчик",
+        null=True,
+        blank=True
+    )
     used_skills = models.ManyToManyField(
         Skill,
         blank=True,
