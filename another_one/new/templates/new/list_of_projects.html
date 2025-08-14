@@ -24,6 +24,11 @@
         <a href="{% url 'отобразить конкретный проект' project.id %}"><div class="main_text">
             {{ project.description|linebreaks|truncatewords:20 }}
         </div></a>
+        <p>
+            {% if project.start_date is not none %}
+                я трудился над этим проектом {{project.period_length_display }}
+            {% endif %}
+        </p>
     </div>
 {% endfor%}
 {% endblock body %}
