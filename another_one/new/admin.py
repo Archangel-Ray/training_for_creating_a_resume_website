@@ -24,6 +24,7 @@ class ProfessionAdmin(admin.ModelAdmin):
 
 class CourseAdmin(admin.ModelAdmin):
     list_display = ["name", "start_date", "end_date"]
+    ordering = ["-end_date"]
 
 
 admin.site.register(MyUser)
