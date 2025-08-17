@@ -243,7 +243,7 @@ class StartAndEndDates(models.Model):
     (например, работы, проекта, курса), а также валидацию этих дат.
     """
     start_date = models.DateField(blank=True, null=True, verbose_name="Дата начала")
-    end_date = models.DateField(blank=True, null=True, verbose_name="Дата конца")
+    end_date = models.DateField(blank=True, null=True, verbose_name="Дата окончания")
 
     start_date: Optional[date]
     end_date: Optional[date]
