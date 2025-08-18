@@ -1,0 +1,30 @@
+{%extends 'base.html'%}
+{% block title %}Проекты Сергея Савельева{% endblock %}
+{% block body %}
+<div class="name_user">
+    Курсы<span class="subtitle projects" style="bottom: 0.4em;">на которых я получал знания</span>
+    <div class="under_menu"> |
+        {% for course in courses %}
+            <a href="{% url 'отобразить конкретный курс' course.id %}">{{ course }}</a> |
+        {% endfor %}
+    </div>
+</div>
+{% for course in courses %}
+    <div class="specifics">
+        <h2>
+            {{ course }}
+            <span class="subtitle">
+            <a href="{{ course.the_author_is_a_host.link_to_the_original }}" target="_blank">
+                {{ course.the_author_is_a_host }}
+            </a>
+            </span>
+        </h2>
+        <a href="{% url 'отобразить конкретный курс' course.id %}"><div class="main_text">
+            {{ course.description|linebreaks|truncatewords:20 }}
+        </div></a>
+        <p>
+            я проходил этот курс {{course.period_length_display }}
+        </p>
+    </div>
+{% endfor%}
+{% endblock body %}
