@@ -16,6 +16,7 @@ from new.models import (
     Skill,
     Working,
     Project,
+    Course,
 )
 
 
@@ -127,6 +128,19 @@ class DetailedOfProject(GetContext, DetailView):
 
 
 detailed_of_project = DetailedOfProject.as_view()
+
+
+class ListOfCourses(GetContext, ListView):
+    template_name = "new/list_of_courses.html"
+    model = Course
+    context_object_name = "courses"
+
+    def get_queryset(self):
+        queryset = Course.objects.order_by(F('end_date').desc(nulls_first=True))
+        return queryset
+
+
+list_of_courses = ListOfCourses.as_view()
 
 
 def skills(request):
