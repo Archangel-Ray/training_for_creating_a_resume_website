@@ -143,6 +143,20 @@ class ListOfCourses(GetContext, ListView):
 list_of_courses = ListOfCourses.as_view()
 
 
+class DetailedOfCourse(GetContext, DetailView):
+    template_name = "new/detailed_of_course.html"
+    model = Course
+    context_object_name = "course"
+
+    def get_context_data(self, **kwargs):
+        context = super().get_context_data(**kwargs)
+        context["menu"] = Course.objects.exclude(pk=self.object.pk)
+        return context
+
+
+detailed_of_course = DetailedOfCourse.as_view()
+
+
 def skills(request):
     context = {
         "i_am": MyUser.objects.get(id=1),
