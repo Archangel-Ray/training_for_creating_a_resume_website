@@ -1,0 +1,45 @@
+{%extends 'base.html'%}
+{% block title %}{{ course }} Сергея Савельева{% endblock %}
+{% block body %}
+
+<div class="upper_menu">
+    {% for choice in menu %}
+        <a href="{% url 'отобразить конкретный курс' choice.id %}">{{ choice }}</a> |
+    {% endfor %}
+</div>
+
+<div class="name_user">
+    <div class="under_name_user">
+        {{course}}
+        <span class="subtitle">
+        <a href="{{ course.the_author_is_a_host.link_to_the_original }}" target="_blank">
+            {{course.the_author_is_a_host}}
+        </a>
+        </span>
+    </div>
+</div>
+<div class="specifics">
+    <p>я изучал этот курс {{course.period_length_display}}</p>
+    <p>
+        с {{course.start_date}}
+        по
+        {% if course.end_date is none %}
+            настоящее время
+        {% else %}
+            {{course.end_date}}
+        {% endif %}
+    </p>
+    <div class="main_text">
+        {{ course.description|linebreaks }}
+    </div>
+
+    {% if course.used_skills.all %}
+        <h4>навыки приобретённые на этом курсе:</h4>
+        <p>
+            {% for skill in course.used_skills.all %}
+            <a href="{% url 'отобразить конкретный навык' skill.id %}">{{ skill }}</a>,
+            {% endfor %}
+        </p>
+    {% endif %}
+</div>
+{% endblock body %}
