@@ -22,7 +22,7 @@
             {% endif %}
         </h2>
         <a href="{% url 'отобразить конкретный проект' project.id %}" class="a_main_text"><div class="main_text">
-            {{ project.description|linebreaks|truncatewords:20 }}
+            {{ project.description|linebreaks|truncatewords:30 }}
         </div></a>
         <p>
             {% if project.start_date is not none %}

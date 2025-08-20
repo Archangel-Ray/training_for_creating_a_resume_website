@@ -20,7 +20,7 @@
             </span>
         </h2>
         <a href="{% url 'отобразить конкретный курс' course.id %}" class="a_main_text"><div class="main_text">
-            {{ course.description|linebreaks|truncatewords:20 }}
+            {{ course.description|linebreaks|truncatewords:30 }}
         </div></a>
         <p>
             я проходил этот курс {{course.period_length_display }}

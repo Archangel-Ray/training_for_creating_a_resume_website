@@ -16,7 +16,7 @@
             <span class="subtitle">{{ working.position }}</span>
         </h2>
         <a href="{% url 'отобразить конкретное рабочее место' working.id %}" class="a_main_text"><div class="main_text">
-            {{ working.description|linebreaks|truncatewords:20 }}
+            {{ working.description|linebreaks|truncatewords:30 }}
         </div></a>
         <p>
             {% if working.start_date is not none %}

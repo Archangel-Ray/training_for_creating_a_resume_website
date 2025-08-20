@@ -22,7 +22,7 @@
             </span>
         </h2>
         <a href="{% url 'отобразить конкретный навык' skill.id %}" class="a_main_text"><div class="main_text">
-            {{ skill.description|linebreaks|truncatewords:20 }}
+            {{ skill.description|linebreaks|truncatewords:30 }}
         </div></a>
     </div>
 {% endfor%}
