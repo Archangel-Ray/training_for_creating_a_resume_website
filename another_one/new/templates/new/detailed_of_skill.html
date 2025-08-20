@@ -30,7 +30,9 @@
         <h4>где я приобрёл этот навык:</h4>
         <p>
             {% for course in skill.courses.all %}
-            <a href="{% url 'отобразить конкретный курс' course.id %}">{{ course }}</a>,
+                <a href="{% url 'отобразить конкретный курс' course.id %}" class="list_specifications">
+                    {{ course }}
+                </a>,
             {% endfor %}
         </p>
     {% endif %}
@@ -39,7 +41,9 @@
         <h4>проекты в которых я этот навык применил:</h4>
         <p>
             {% for project in skill.projects.all %}
-            <a href="{% url 'отобразить конкретный проект' project.id %}">{{ project }}</a>,
+                <a href="{% url 'отобразить конкретный проект' project.id %}" class="list_specifications">
+                    {{ project }}
+                </a>,
             {% endfor %}
         </p>
     {% endif %}
@@ -48,7 +52,9 @@
         <h4>отработал этот навык на рабочих местах:</h4>
         <p>
             {% for worked in skill.i_worked_for.all %}
-            <a href="{% url 'отобразить конкретное рабочее место' worked.id %}">{{ worked }}</a>,
+                <a href="{% url 'отобразить конкретное рабочее место' worked.id %}" class="list_specifications">
+                    {{ worked }}
+                </a>,
             {% endfor %}
         </p>
     {% endif %}

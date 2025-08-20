@@ -21,7 +21,7 @@
                 {% endif %}
             </span>
         </h2>
-        <a href="{% url 'отобразить конкретный навык' skill.id %}"><div class="main_text">
+        <a href="{% url 'отобразить конкретный навык' skill.id %}" class="a_main_text"><div class="main_text">
             {{ skill.description|linebreaks|truncatewords:20 }}
         </div></a>
     </div>

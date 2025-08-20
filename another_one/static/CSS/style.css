@@ -52,14 +52,9 @@ textarea {
     scrollbar-width: thin;
 }
 
-.basic_inf a {
-    text-decoration: none;
-    color: #122400;
-}
-
-.basic_inf a:hover {
+li a:hover {
     font-weight: bold;
-    text-shadow: 0.05em 0.05em 0.3em white;
+    text-shadow: 0 0 0.3em white;
 }
 
 button {
@@ -98,6 +93,11 @@ button:hover {
 
 .basic_inf {
     padding: 0 20px;
+}
+
+.basic_inf a {
+    text-decoration: none;
+    color: #122400;
 }
 
 .name_user {
@@ -145,6 +145,10 @@ button:hover {
     padding: 0 2em;
 }
 
+.under_menu a:hover {
+    text-shadow: 0 0 0.5em white;
+}
+
 .about_me p {
     text-align: justify;
 }
@@ -172,7 +176,6 @@ button:hover {
 
 .subtitle {
     display: block;
-    font-weight: normal;
     color: #dfecdc;
     font-size: 0.6em;
     font-style: oblique;
@@ -181,8 +184,16 @@ button:hover {
 }
 
 .subtitle a {
-    color: #8a9175;
-    text-shadow: 0.04em 0.04em 0.15em #12240050;
+    color: #5c624a;
+    text-shadow: 0.04em 0.04em 0.15em white;
+}
+
+.subtitle a:hover {
+    color: white;
+    text-shadow: 0.05em 0.05em 0.5em #142200;
+    background-color: #12440e21;
+    padding: 0.05em 0.3em;
+    border-radius: 0.4em;
 }
 
 .main_text p {
@@ -196,6 +207,18 @@ button:hover {
     text-align: left;
     margin-bottom: 0;
     font-size: 0.8em;
+}
+
+.a_main_text:hover {
+    color: #024400;
+    text-shadow: 0 0 0.1em #024400;
+}
+
+.list_specifications:hover {
+    color: white;
+    text-shadow: 0.05em 0.05em 0.2em #024400;
+    background-color: #12440e21;
+    border-radius: 4px;
 }
 
 .specifics > p {

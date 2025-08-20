@@ -37,7 +37,7 @@
         <h4>навыки приобретённые на этом курсе:</h4>
         <p>
             {% for skill in course.used_skills.all %}
-            <a href="{% url 'отобразить конкретный навык' skill.id %}">{{ skill }}</a>,
+            <a href="{% url 'отобразить конкретный навык' skill.id %}" class="list_specifications">{{ skill }}</a>,
             {% endfor %}
         </p>
     {% endif %}

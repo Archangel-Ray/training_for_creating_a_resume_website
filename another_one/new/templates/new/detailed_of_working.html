@@ -35,7 +35,9 @@
         <h4>навыки отработанные на этом месте:</h4>
         <p>
             {% for skill in working.used_skills.all %}
-            <a href="{% url 'отобразить конкретный навык' skill.id %}">{{ skill }}</a>,
+                <a href="{% url 'отобразить конкретный навык' skill.id %}" class="list_specifications">
+                    {{ skill }}
+                </a>,
             {% endfor %}
         </p>
     {% endif %}
@@ -44,7 +46,9 @@
         <h4>проекты сделанные на этом месте:</h4>
         <p>
             {% for project in working.projects.all %}
-            <a href="{% url 'отобразить конкретный проект' project.id %}">{{ project }}</a>,
+                <a href="{% url 'отобразить конкретный проект' project.id %}" class="list_specifications">
+                    {{ project }}
+                </a>,
             {% endfor %}
         </p>
     {% endif %}
