@@ -19,6 +19,7 @@ h1, h2, h3, h4, h5 {
     text-shadow: 0.04em 0.04em 0.15em #122400;
     border-top: 1.5px solid #fff7df;
     background: #1224000d;
+    clear: both;
 }
 
 ::selection {
@@ -227,6 +228,13 @@ button:hover {
     margin: 0;
     color: #122400de;
     font-size: 0.9em;
+}
+
+.certificate img {
+    float: left;
+    margin-right: 1em;
+    margin-bottom: 1em;
+    width: 125px;
 }
 
 .footer {
