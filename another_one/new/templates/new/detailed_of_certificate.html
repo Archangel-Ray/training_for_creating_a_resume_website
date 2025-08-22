@@ -1,0 +1,38 @@
+{%extends 'base.html'%}
+{%load static%}
+
+{% block title %}Сертификат Сергея Савельева за курс {{ certificate }}{% endblock %}
+
+{% block body %}
+<div class="upper_menu"> |
+    {% for choice in menu %}
+        <a href="{% url 'отобразить конкретный сертификат' choice.id %}">{{ choice }}</a> |
+    {% endfor %}
+</div>
+
+<div class="name_user">
+    <div class="under_name_user">
+        {{certificate}}
+        <span class="subtitle">
+        <a href="{{ certificate.link_to_the_original }}" target="_blank">
+            посмотреть на оригинал сертификата
+        </a>
+        </span>
+    </div>
+</div>
+<div class="specifics">
+    <p>я получил этот сертификат {{certificate.date}}</p>
+    <p>на курсе
+        <a href="{% url 'отобразить конкретный курс' certificate.course.id %}" class="list_specifications">
+            <u>{{certificate.course}}</u>
+        </a>
+    </p>
+    <img
+        src="{% static ''|add:certificate.image.url %}"
+        alt="Изображение сертификата"
+    >
+    <div class="main_text">
+        {{ certificate.description|linebreaks }}
+    </div>
+</div>
+{% endblock body %}
