@@ -7,7 +7,7 @@
     Сертификаты<span class="subtitle projects" style="bottom: 0.4em;">которые я получил</span>
     <div class="under_menu"> |
         {% for certificate in certificates %}
-            <a href="{#% url 'отобразить конкретный сертификат' certificate.id %#}">{{ certificate }}</a> |
+            <a href="{% url 'отобразить конкретный сертификат' certificate.id %}">{{ certificate }}</a> |
         {% endfor %}
     </div>
 </div>
@@ -26,7 +26,7 @@
                 src="{% static ''|add:certificate.image.url %}"
                 alt="Изображение сертификата"
             >
-            <a href="{#% url 'отобразить конкретный сертификат' certificate.id %#}" class="a_main_text">
+            <a href="{% url 'отобразить конкретный сертификат' certificate.id %}" class="a_main_text">
                 <div class="main_text">
                     <p>я получил этот сертификат {{certificate.date}} на курсе {{certificate.course}}</p>
                     {{ certificate.description|linebreaks|truncatewords:30 }}
