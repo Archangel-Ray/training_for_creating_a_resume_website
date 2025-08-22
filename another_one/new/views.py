@@ -171,6 +171,20 @@ class ListOfCertificates(GetContext, ListView):
 list_of_certificates = ListOfCertificates.as_view()
 
 
+class DetailedOfCertificates(GetContext, DetailView):
+    template_name = "new/detailed_of_certificate.html"
+    model = Certificate
+    context_object_name = "certificate"
+
+    def get_context_data(self, **kwargs):
+        context = super().get_context_data(**kwargs)
+        context["menu"] = Certificate.objects.exclude(pk=self.object.pk)
+        return context
+
+
+detailed_of_certificate = DetailedOfCertificates.as_view()
+
+
 def skills(request):
     context = {
         "i_am": MyUser.objects.get(id=1),
