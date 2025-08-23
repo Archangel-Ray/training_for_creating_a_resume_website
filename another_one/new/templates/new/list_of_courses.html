@@ -13,6 +13,7 @@
     <div class="specifics">
         <h2>
             {{ course }}
+            <span class="subtitle" style="bottom: 0.1em;">{{course.start_date}} - {{course.end_date}}</span>
             <span class="subtitle">
             <a href="{{ course.the_author_is_a_host.link_to_the_original }}" target="_blank">
                 {{ course.the_author_is_a_host }}
@@ -22,9 +23,6 @@
         <a href="{% url 'отобразить конкретный курс' course.id %}" class="a_main_text"><div class="main_text">
             {{ course.description|linebreaks|truncatewords:30 }}
         </div></a>
-        <p>
-            я проходил этот курс {{course.period_length_display }}
-        </p>
     </div>
 {% endfor%}
 {% endblock body %}
