@@ -2,7 +2,7 @@
 {% block title %}Курсы Сергея Савельева{% endblock %}
 {% block body %}
 <div class="name_user">
-    Курсы<span class="subtitle projects" style="bottom: 0.4em;">на которых я получал знания</span>
+    Курсы<span class="subtitle projects" style="bottom: 0.2em;">на которых я получал знания</span>
     <div class="under_menu"> |
         {% for course in courses %}
             <a href="{% url 'отобразить конкретный курс' course.id %}">{{ course }}</a> |
