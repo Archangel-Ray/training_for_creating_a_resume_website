@@ -2,7 +2,7 @@
 {% block title %}Проекты Сергея Савельева{% endblock %}
 {% block body %}
 <div class="name_user">
-    Проекты <span class="subtitle projects" style="bottom: 0.4em;">над которыми я трудился</span>
+    Проекты <span class="subtitle projects" style="bottom: 0.2em;">над которыми я трудился</span>
     <div class="under_menu"> |
         {% for project in projects %}
             <a href="{% url 'отобразить конкретный проект' project.id %}">{{ project }}</a> |
