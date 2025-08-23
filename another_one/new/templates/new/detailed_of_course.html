@@ -33,6 +33,14 @@
         {{ course.description|linebreaks }}
     </div>
 
+    {% if course.certificate %}
+        <a href="{% url 'отобразить конкретный сертификат' course.certificate.id %}" title="Посмотреть сертификат">
+            <h5>
+                Показать сертификат
+            </h5>
+        </a>
+    {% endif %}
+
     {% if course.used_skills.all %}
         <h4>навыки приобретённые на этом курсе:</h4>
         <p>
