@@ -203,6 +203,15 @@ button:hover {
     text-indent: 1.5em;
 }
 
+.specifics h5 {
+    border: none;
+    text-align: right;
+}
+
+.specifics > a > h5:hover {
+    background-color: #024400;
+}
+
 .specifics h4 {
     border: none;
     text-align: left;
