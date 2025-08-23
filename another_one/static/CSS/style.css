@@ -230,12 +230,18 @@ button:hover {
     font-size: 0.9em;
 }
 
-.specifics img {
+.specifics > img {
     width: 100%;
     margin-top: 1em;
 }
 
-.certificate img {
+h2 img {
+    float: right;
+    height: 15px;
+    margin-left: 0.5em;
+}
+
+.certificate > img {
     float: left;
     margin-right: 1em;
     margin-bottom: 1em;
