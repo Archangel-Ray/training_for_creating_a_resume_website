@@ -1,4 +1,6 @@
 {%extends 'base.html'%}
+{%load static%}
+
 {% block title %}Курсы Сергея Савельева{% endblock %}
 {% block body %}
 <div class="name_user">
@@ -12,6 +14,15 @@
 {% for course in courses %}
     <div class="specifics">
         <h2>
+            {%if course.certificate%}
+                <a href="{% url 'отобразить конкретный сертификат' course.certificate.id %}"
+                   title="Посмотреть сертификат">
+                        <img
+                            src="{% static ''|add:course.certificate.image.url %}"
+                            alt="Изображение сертификата"
+                        >
+                </a>
+            {%endif%}
             {{ course }}
             <span class="subtitle" style="bottom: 0.1em;">{{course.start_date}} - {{course.end_date}}</span>
             <span class="subtitle">
