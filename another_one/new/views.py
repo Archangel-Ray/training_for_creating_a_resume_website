@@ -18,6 +18,7 @@ from new.models import (
     Project,
     Course,
     Certificate,
+    Passion,
 )
 
 
@@ -183,6 +184,29 @@ class DetailedOfCertificates(GetContext, DetailView):
 
 
 detailed_of_certificate = DetailedOfCertificates.as_view()
+
+
+class ListOfPassions(GetContext, ListView):
+    template_name = "new/list_of_passions.html"
+    model = Passion
+    context_object_name = "passions"
+
+
+list_of_passions = ListOfPassions.as_view()
+
+
+class DetailedOfPassions(GetContext, DetailView):
+    template_name = "new/detailed_of_passion.html"
+    model = Passion
+    context_object_name = "passion"
+
+    def get_context_data(self, **kwargs):
+        context = super().get_context_data(**kwargs)
+        context["menu"] = Passion.objects.exclude(pk=self.object.pk)
+        return context
+
+
+detailed_of_passion = DetailedOfPassions.as_view()
 
 
 def skills(request):
