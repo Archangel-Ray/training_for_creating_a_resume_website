@@ -1,0 +1,22 @@
+{%extends 'base.html'%}
+{% block title %}{{passion}} - увлечение Сергея Савельева{% endblock %}
+{% block body %}
+
+<div class="upper_menu">
+    {% for choice in menu %}
+        <a href="{% url 'отобразить конкретное увлечение' choice.id %}">{{ choice }}</a> |
+    {% endfor %}
+</div>
+
+<div class="name_user">
+    <div class="under_name_user">
+        {{passion}}
+    </div>
+</div>
+
+<div class="specifics">
+    <div class="main_text">
+        {{passion.description|linebreaks}}
+    </div>
+</div>
+{% endblock body %}
