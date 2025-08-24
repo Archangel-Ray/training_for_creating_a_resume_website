@@ -1,0 +1,20 @@
+{%extends 'base.html'%}
+{% block title %}Увлечения Сергея Савельева{% endblock %}
+{% block body %}
+<div class="name_user">
+    Мои увлечения
+    <div class="under_menu">|
+        {%for passion in passions%}
+        <a href="{% url 'отобразить конкретное увлечение' passion.id %}">{{ passion }}</a> |
+        {% endfor %}
+    </div>
+</div>
+{%for passion in passions%}
+    <div class="specifics">
+        <h2>{{passion}}</h2>
+        <a href="{% url 'отобразить конкретное увлечение' passion.id %}" class="a_main_text"><div class="main_text">
+            {{ passion.description|linebreaks|truncatewords:30 }}
+        </div></a>
+    </div>
+{% endfor%}
+{% endblock body %}
