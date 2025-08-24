@@ -209,13 +209,6 @@ class DetailedOfPassions(GetContext, DetailView):
 detailed_of_passion = DetailedOfPassions.as_view()
 
 
-def skills(request):
-    context = {
-        "i_am": MyUser.objects.get(id=1),
-    }
-    return render(request, 'new/display_data.html', context=context)
-
-
 def transition_to_watsapp(request):
     return redirect("https://wa.me/79885173602")
 
