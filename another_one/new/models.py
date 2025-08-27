@@ -1,5 +1,5 @@
 from datetime import date
-from typing import Optional
+from typing import Optional, ClassVar
 
 from dateutil.relativedelta import relativedelta
 from django.contrib.auth.models import AbstractUser
@@ -341,7 +341,9 @@ class Skill(Generalization):
         blank=True,
         verbose_name="Уровень владения навыком",
     )
-    
+    # объявляем менеджер явно, чтобы IDE его понимала
+    objects: ClassVar[models.Manager["Skill"]]
+
     class Meta:
         verbose_name = "Навык"
         verbose_name_plural = "Навыки"
@@ -359,6 +361,9 @@ class Working(Generalization, StartAndEndDates, LinkToTheOriginal):
         related_name="i_worked_for",
         verbose_name="Навыки полученные на этой работе",
     )
+
+    # объявляем менеджер явно, чтобы IDE его понимала
+    objects: ClassVar[models.Manager["Working"]]
 
     class Meta:
         verbose_name = "Рабочее место"
@@ -385,12 +390,18 @@ class Project(Generalization, StartAndEndDates, LinkToTheOriginal):
         verbose_name="Рабочее место проекта",
     )
 
+    # объявляем менеджер явно, чтобы IDE его понимала
+    objects: ClassVar[models.Manager["Project"]]
+
     class Meta:
         verbose_name = "Проект"
         verbose_name_plural = "Проекты"
 
 
 class DeveloperOfTheCourse(Generalization, LinkToTheOriginal):
+    # объявляем менеджер явно, чтобы IDE его понимала
+    objects: ClassVar[models.Manager["DeveloperOfTheCourse"]]
+
     class Meta:
         verbose_name = "Автор курса"
         verbose_name_plural = "Авторы курсов"
@@ -414,6 +425,9 @@ class Course(Generalization, StartAndEndDates, LinkToTheOriginal):
         related_name="courses",
         verbose_name="Приобретённые навыки",
     )
+
+    # объявляем менеджер явно, чтобы IDE его понимала
+    objects: ClassVar[models.Manager["Course"]]
 
     class Meta:
         verbose_name = "Курс"
@@ -441,6 +455,9 @@ class Certificate(Generalization, LinkToTheOriginal):
         verbose_name="Где получен",
     )
 
+    # объявляем менеджер явно, чтобы IDE его понимала
+    objects: ClassVar[models.Manager["Certificate"]]
+
     class Meta:
         verbose_name = "Сертификат"
         verbose_name_plural = "Сертификаты"
@@ -451,6 +468,9 @@ class Passion(Generalization):
     Личное увлечение или интерес кандидата.
     Не связано с профессиональной деятельностью, но помогает дополнить образ.
     """
+    # объявляем менеджер явно, чтобы IDE его понимала
+    objects: ClassVar[models.Manager["Passion"]]
+
     class Meta:
         verbose_name = "Увлечение"
         verbose_name_plural = "Увлечения"
