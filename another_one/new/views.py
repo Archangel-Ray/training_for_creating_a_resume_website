@@ -24,6 +24,7 @@ from new.models import (
 
 class GetContext:
     def get_context_data(self, **kwargs):
+        # noinspection PyUnresolvedReferences
         context = super().get_context_data(**kwargs)
         context['i_am'] = MyUser.objects.get(id=1)
         return context
@@ -71,6 +72,7 @@ class DetailedSkill(GetContext, DetailView):
 
     def get_context_data(self, **kwargs):
         context = super().get_context_data(**kwargs)
+        # noinspection PyUnresolvedReferences
         context["menu"] = Skill.objects.exclude(pk=self.object.pk)
         return context
 
@@ -84,6 +86,7 @@ class ListOfWorking(GetContext, ListView):
     context_object_name = "workings"
 
     def get_queryset(self):
+        # noinspection PyUnresolvedReferences
         queryset = Working.objects.order_by(F('end_date').desc(nulls_first=True))
         return queryset
 
@@ -98,6 +101,7 @@ class DetailedOfWorking(GetContext, DetailView):
 
     def get_context_data(self, **kwargs):
         context = super().get_context_data(**kwargs)
+        # noinspection PyUnresolvedReferences
         context["menu"] = Working.objects.exclude(pk=self.object.pk)
         return context
 
@@ -111,6 +115,7 @@ class ListOfProjects(GetContext, ListView):
     context_object_name = "projects"
 
     def get_queryset(self):
+        # noinspection PyUnresolvedReferences
         queryset = Project.objects.order_by(F('end_date').desc(nulls_first=True))
         return queryset
 
@@ -125,6 +130,7 @@ class DetailedOfProject(GetContext, DetailView):
 
     def get_context_data(self, **kwargs):
         context = super().get_context_data(**kwargs)
+        # noinspection PyUnresolvedReferences
         context["menu"] = Project.objects.exclude(pk=self.object.pk)
         return context
 
@@ -138,6 +144,7 @@ class ListOfCourses(GetContext, ListView):
     context_object_name = "courses"
 
     def get_queryset(self):
+        # noinspection PyUnresolvedReferences
         queryset = Course.objects.order_by(F('end_date').desc(nulls_first=True))
         return queryset
 
@@ -152,6 +159,7 @@ class DetailedOfCourse(GetContext, DetailView):
 
     def get_context_data(self, **kwargs):
         context = super().get_context_data(**kwargs)
+        # noinspection PyUnresolvedReferences
         context["menu"] = Course.objects.exclude(pk=self.object.pk)
         return context
 
@@ -165,6 +173,7 @@ class ListOfCertificates(GetContext, ListView):
     context_object_name = "certificates"
 
     def get_queryset(self):
+        # noinspection PyUnresolvedReferences
         queryset = Certificate.objects.order_by(F('date').desc(nulls_first=True))
         return queryset
 
@@ -179,6 +188,7 @@ class DetailedOfCertificates(GetContext, DetailView):
 
     def get_context_data(self, **kwargs):
         context = super().get_context_data(**kwargs)
+        # noinspection PyUnresolvedReferences
         context["menu"] = Certificate.objects.exclude(pk=self.object.pk)
         return context
 
@@ -202,6 +212,7 @@ class DetailedOfPassions(GetContext, DetailView):
 
     def get_context_data(self, **kwargs):
         context = super().get_context_data(**kwargs)
+        # noinspection PyUnresolvedReferences
         context["menu"] = Passion.objects.exclude(pk=self.object.pk)
         return context
 
