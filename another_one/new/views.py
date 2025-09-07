@@ -11,6 +11,7 @@ from django.views.generic import (
 from django.views.generic.edit import UpdateView
 
 from new.forms import UpdateIndividualForm
+from new.mixins import FeedbackListMixin
 from new.models import (
     MyUser,
     Skill,
@@ -56,7 +57,7 @@ class UpdateIndividual(UpdateView):
 update_individual = UpdateIndividual.as_view()
 
 
-class ListOfSkills(GetContext, ListView):
+class ListOfSkills(GetContext, FeedbackListMixin, ListView):
     template_name = "new/list_of_skills.html"
     model = Skill
     context_object_name = "skills"
@@ -79,7 +80,7 @@ class DetailedSkill(GetContext, DetailView):
 detailed_skill = DetailedSkill.as_view()
 
 
-class ListOfWorking(GetContext, ListView):
+class ListOfWorking(GetContext, FeedbackListMixin, ListView):
     template_name = "new/list_of_working.html"
     model = Working
     context_object_name = "workings"
@@ -106,7 +107,7 @@ class DetailedOfWorking(GetContext, DetailView):
 detailed_of_working = DetailedOfWorking.as_view()
 
 
-class ListOfProjects(GetContext, ListView):
+class ListOfProjects(GetContext, FeedbackListMixin, ListView):
     template_name = "new/list_of_projects.html"
     model = Project
     context_object_name = "projects"
@@ -133,7 +134,7 @@ class DetailedOfProject(GetContext, DetailView):
 detailed_of_project = DetailedOfProject.as_view()
 
 
-class ListOfCourses(GetContext, ListView):
+class ListOfCourses(GetContext, FeedbackListMixin, ListView):
     template_name = "new/list_of_courses.html"
     model = Course
     context_object_name = "courses"
@@ -160,7 +161,7 @@ class DetailedOfCourse(GetContext, DetailView):
 detailed_of_course = DetailedOfCourse.as_view()
 
 
-class ListOfCertificates(GetContext, ListView):
+class ListOfCertificates(GetContext, FeedbackListMixin, ListView):
     template_name = "new/list_of_certificates.html"
     model = Certificate
     context_object_name = "certificates"
@@ -187,7 +188,7 @@ class DetailedOfCertificates(GetContext, DetailView):
 detailed_of_certificate = DetailedOfCertificates.as_view()
 
 
-class ListOfPassions(GetContext, ListView):
+class ListOfPassions(GetContext, FeedbackListMixin, ListView):
     template_name = "new/list_of_passions.html"
     model = Passion
     context_object_name = "passions"
