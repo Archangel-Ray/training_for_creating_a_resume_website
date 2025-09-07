@@ -3,6 +3,8 @@ from typing import Optional, ClassVar
 
 from dateutil.relativedelta import relativedelta
 from django.contrib.auth.models import AbstractUser
+from django.contrib.contenttypes.fields import GenericForeignKey
+from django.contrib.contenttypes.models import ContentType
 from django.core.exceptions import ValidationError
 from django.db import models
 
@@ -474,3 +476,48 @@ class Passion(Generalization):
     class Meta:
         verbose_name = "Увлечение"
         verbose_name_plural = "Увлечения"
+
+
+class Feedback(models.Model):
+    """
+    Универсальная таблица для откликов под всеми компетенциями (навыки, проекты, курсы...)
+    Как под списками, так и под конкретными компетенциями.
+    """
+    author_user = models.ForeignKey(
+        MyUser,
+        on_delete=models.SET_NULL,
+        null=True,
+        blank=True,
+        verbose_name="Пользователь"
+    )
+    author_name = models.CharField(
+        "Имя (для анонимов)",
+        max_length=255,
+        blank=True,
+        null=True
+    )
+    content = models.TextField("Сообщение")
+
+    # универсальная привязка к любому объекту
+    content_type = models.ForeignKey(ContentType, on_delete=models.CASCADE)
+    object_id = models.PositiveIntegerField()
+    target = GenericForeignKey("content_type", "object_id")
+
+    created_at = models.DateTimeField(auto_now_add=True)
+    updated_at = models.DateTimeField(auto_now=True)
+
+    status = models.CharField(
+        max_length=20,
+        choices=[
+            ("published", "Опубликовано"),
+            ("pending", "На модерации"),
+            ("hidden", "Скрыто"),
+        ],
+        default="published",
+    )
+
+    class Meta:
+        ordering = ["-created_at"]
+
+    def __str__(self):
+        return f"Отклик от {self.author_user or self.author_name or 'Аноним'} на {self.content_type} №{self.object_id}"
