@@ -10,44 +10,44 @@ from .forms import FeedbackForm
 
 class FeedbackListMixin:
     """
-    Mixin для ListView, чтобы добавить блок откликов ко ВСЕМ объектам списка.
-    Пример: общие отзывы о навыках, проектах и т.д.
+    Mixin РґР»СЏ ListView, С‡С‚РѕР±С‹ РґРѕР±Р°РІРёС‚СЊ Р±Р»РѕРє РѕС‚РєР»РёРєРѕРІ РєРѕ Р’РЎР•Рњ РѕР±СЉРµРєС‚Р°Рј СЃРїРёСЃРєР°.
+    РџСЂРёРјРµСЂ: РѕР±С‰РёРµ РѕС‚Р·С‹РІС‹ Рѕ РЅР°РІС‹РєР°С…, РїСЂРѕРµРєС‚Р°С… Рё С‚.Рґ.
     """
 
     feedback_model = Feedback
     feedback_form_class = FeedbackForm
 
     def get_feedback_content_type(self):
-        """Возвращает ContentType для модели списка (например Skill, Project)."""
+        """Р’РѕР·РІСЂР°С‰Р°РµС‚ ContentType РґР»СЏ РјРѕРґРµР»Рё СЃРїРёСЃРєР° (РЅР°РїСЂРёРјРµСЂ Skill, Project)."""
         return ContentType.objects.get_for_model(self.model)
 
     def get_feedback_queryset(self):
-        """Отзывы без object_id (относятся к разделу в целом)."""
+        """РћС‚Р·С‹РІС‹ Р±РµР· object_id (РѕС‚РЅРѕСЃСЏС‚СЃСЏ Рє СЂР°Р·РґРµР»Сѓ РІ С†РµР»РѕРј)."""
         return self.feedback_model.objects.filter(
             content_type=self.get_feedback_content_type(),
-            object_id__isnull=True,  # none будет означать для списка всех элементов
+            object_id__isnull=True,
             status="published"
         )
 
     def get_feedback_form(self, data=None):
-        """Возвращает форму (пустую или с данными)."""
+        """Р’РѕР·РІСЂР°С‰Р°РµС‚ С„РѕСЂРјСѓ (РїСѓСЃС‚СѓСЋ РёР»Рё СЃ РґР°РЅРЅС‹РјРё)."""
         return self.feedback_form_class(data)
 
     def post(self, request, *args, **kwargs):
-        """Обработка отправки отклика."""
+        """РћР±СЂР°Р±РѕС‚РєР° РѕС‚РїСЂР°РІРєРё РѕС‚РєР»РёРєР°."""
         self.object_list = self.get_queryset()
         form = self.get_feedback_form(request.POST)
 
         if form.is_valid():
             fb = form.save(commit=False)
             fb.content_type = self.get_feedback_content_type()
-            fb.object_id = None  # none будет означать для списка всех элементов
+            fb.object_id = None
             if request.user.is_authenticated:
                 fb.author_user = request.user
             fb.save()
             return redirect(request.path)
 
-        # если форма невалидна рендерим с ошибками
+        # РµСЃР»Рё С„РѕСЂРјР° РЅРµРІР°Р»РёРґРЅР° в†’ СЂРµРЅРґРµСЂРёРј СЃ РѕС€РёР±РєР°РјРё
         context = self.get_context_data(form=form)
         return self.render_to_response(context)
 
@@ -60,19 +60,19 @@ class FeedbackListMixin:
 
 class FeedbackDetailMixin:
     """
-    Mixin для DetailView: добавляет блок откликов к конкретному объекту
-    (например, к одному навыку, проекту, работе, пользователю и т.д.).
+    Mixin РґР»СЏ DetailView: РґРѕР±Р°РІР»СЏРµС‚ Р±Р»РѕРє РѕС‚РєР»РёРєРѕРІ Рє РєРѕРЅРєСЂРµС‚РЅРѕРјСѓ РѕР±СЉРµРєС‚Сѓ
+    (РЅР°РїСЂРёРјРµСЂ, Рє РѕРґРЅРѕРјСѓ РЅР°РІС‹РєСѓ, РїСЂРѕРµРєС‚Сѓ, СЂР°Р±РѕС‚Рµ, РїРѕР»СЊР·РѕРІР°С‚РµР»СЋ Рё С‚.Рґ.).
     """
 
     feedback_model = Feedback
     feedback_form_class = FeedbackForm
 
     def get_feedback_content_type(self):
-        """Возвращает ContentType для конкретного элемента модели."""
+        """Р’РѕР·РІСЂР°С‰Р°РµС‚ ContentType РґР»СЏ РєРѕРЅРєСЂРµС‚РЅРѕРіРѕ СЌР»РµРјРµРЅС‚Р° РјРѕРґРµР»Рё."""
         return ContentType.objects.get_for_model(self.object)
 
     def get_feedback_queryset(self):
-        """Отзыв на конкретный элемент конкретной модели."""
+        """РћС‚Р·С‹РІС‹ РЅР° РєРѕРЅРєСЂРµС‚РЅС‹Р№ СЌР»РµРјРµРЅС‚ РјРѕРґРµР»Рё РїРѕ object_id."""
         return self.feedback_model.objects.filter(
             content_type=self.get_feedback_content_type(),
             object_id=self.object.id,
@@ -80,12 +80,12 @@ class FeedbackDetailMixin:
         )
 
     def get_feedback_form(self, data=None):
-        """Возвращает форму (пустую или с данными)."""
+        """Р’РѕР·РІСЂР°С‰Р°РµС‚ С„РѕСЂРјСѓ (РїСѓСЃС‚СѓСЋ РёР»Рё СЃ РґР°РЅРЅС‹РјРё)."""
         return self.feedback_form_class(data)
 
     def post(self, request, *args, **kwargs):
         """
-        Обработка формы откликов для конкретного объекта.
+        РћР±СЂР°Р±РѕС‚РєР° С„РѕСЂРјС‹ РѕС‚РєР»РёРєРѕРІ РґР»СЏ РєРѕРЅРєСЂРµС‚РЅРѕРіРѕ РѕР±СЉРµРєС‚Р°.
         """
         self.object = self.get_object()
         form = self.get_feedback_form(request.POST)
