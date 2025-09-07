@@ -11,7 +11,10 @@ from django.views.generic import (
 from django.views.generic.edit import UpdateView
 
 from new.forms import UpdateIndividualForm
-from new.mixins import FeedbackListMixin
+from new.mixins import (
+    FeedbackListMixin,
+    FeedbackDetailMixin,
+)
 from new.models import (
     MyUser,
     Skill,
@@ -35,7 +38,7 @@ def main(request):
     return render(request, 'new/basic_information.html')
 
 
-class Individual(DetailView):
+class Individual(FeedbackDetailMixin, DetailView):
     model = MyUser
     template_name = "new/individual_information.html"
 
@@ -66,7 +69,7 @@ class ListOfSkills(GetContext, FeedbackListMixin, ListView):
 list_of_skills = ListOfSkills.as_view()
 
 
-class DetailedSkill(GetContext, DetailView):
+class DetailedSkill(GetContext, FeedbackDetailMixin, DetailView):
     template_name = "new/detailed_of_skill.html"
     model = Skill
     context_object_name = "skill"
@@ -93,7 +96,7 @@ class ListOfWorking(GetContext, FeedbackListMixin, ListView):
 list_of_working = ListOfWorking.as_view()
 
 
-class DetailedOfWorking(GetContext, DetailView):
+class DetailedOfWorking(GetContext, FeedbackDetailMixin, DetailView):
     template_name = "new/detailed_of_working.html"
     model = Working
     context_object_name = "working"
@@ -120,7 +123,7 @@ class ListOfProjects(GetContext, FeedbackListMixin, ListView):
 list_of_projects = ListOfProjects.as_view()
 
 
-class DetailedOfProject(GetContext, DetailView):
+class DetailedOfProject(GetContext, FeedbackDetailMixin, DetailView):
     template_name = "new/detailed_of_project.html"
     model = Project
     context_object_name = "project"
@@ -147,7 +150,7 @@ class ListOfCourses(GetContext, FeedbackListMixin, ListView):
 list_of_courses = ListOfCourses.as_view()
 
 
-class DetailedOfCourse(GetContext, DetailView):
+class DetailedOfCourse(GetContext, FeedbackDetailMixin, DetailView):
     template_name = "new/detailed_of_course.html"
     model = Course
     context_object_name = "course"
@@ -174,7 +177,7 @@ class ListOfCertificates(GetContext, FeedbackListMixin, ListView):
 list_of_certificates = ListOfCertificates.as_view()
 
 
-class DetailedOfCertificates(GetContext, DetailView):
+class DetailedOfCertificates(GetContext, FeedbackDetailMixin, DetailView):
     template_name = "new/detailed_of_certificate.html"
     model = Certificate
     context_object_name = "certificate"
@@ -197,7 +200,7 @@ class ListOfPassions(GetContext, FeedbackListMixin, ListView):
 list_of_passions = ListOfPassions.as_view()
 
 
-class DetailedOfPassions(GetContext, DetailView):
+class DetailedOfPassions(GetContext, FeedbackDetailMixin, DetailView):
     template_name = "new/detailed_of_passion.html"
     model = Passion
     context_object_name = "passion"
