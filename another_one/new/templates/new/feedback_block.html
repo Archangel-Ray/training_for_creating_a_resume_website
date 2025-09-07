@@ -1,0 +1,21 @@
+<div class="feedback-section">
+    <h4>Оставить отзыв</h4>
+    <form method="post">
+        {% csrf_token %}
+        {{ feedback_form.as_p }}
+        <button type="submit">Отправить</button>
+    </form>
+
+    <h3>Отзывы</h3>
+
+    {% for fb in feedbacks %}
+        <div class="feedback">
+            <strong>{{ fb.author_user.username|default:fb.author_name|default:"пользователь не назвался" }}</strong>:
+            <p>{{ fb.content }}</p>
+            <small>{{ fb.created_at }}</small>
+        </div>
+    {% empty %}
+        <p>тут ещё нет отзывов. Ваш будет первым.</p>
+    {% endfor %}
+
+</div>
