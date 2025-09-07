@@ -3,6 +3,7 @@ from django.forms import (
     DateField,
     DateInput,
     CheckboxSelectMultiple,
+    Textarea,
 )
 # from django.forms.widgets import (
 #     FileInput,
@@ -10,6 +11,7 @@ from django.forms import (
 
 from .models import (
     MyUser,
+    Feedback,
 )
 
 
@@ -54,3 +56,12 @@ class UpdateIndividualForm(ModelForm):
         self.fields['city'].empty_label = '— Не выбран —'
         self.fields['profession'].empty_label = '— Не выбрана —'
         self.fields['job'].empty_label = '— Не указано —'
+
+
+class FeedbackForm(ModelForm):
+    class Meta:
+        model = Feedback
+        fields = ["author_name", "content"]
+        widgets = {
+            "content": Textarea(attrs={"rows": 3, "placeholder": "Что Вы думаете об этом..."}),
+        }
