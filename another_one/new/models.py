@@ -222,6 +222,15 @@ class MyUser(AbstractUser):
     motto = models.CharField(max_length=1000, verbose_name="Мой девиз", null=True, blank=True)
     about_me = models.TextField(verbose_name="Обо мне", null=True, blank=True)
 
+    def get_full_name_with_patronymic(self):
+        """
+        Возвращает полное имя с отчеством (если указано).
+        Если ничего нет — fallback на username.
+        """
+        parts = [self.last_name, self.first_name, self.patronymic]
+        full_name = " ".join([p for p in parts if p])  # собираем ФИО
+        return full_name.strip() or self.username
+
 
 class Generalization(models.Model):
     """
