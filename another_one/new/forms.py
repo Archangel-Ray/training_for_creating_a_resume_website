@@ -65,3 +65,7 @@ class FeedbackForm(ModelForm):
         widgets = {
             "content": Textarea(attrs={"rows": 3, "placeholder": "Что Вы думаете об этом..."}),
         }
+
+    def __init__(self, *args, **kwargs):
+        user = kwargs.pop("user", None)  # пользователя получаем при запросе получить форму в миксине представления
+        super().__init__(*args, **kwargs)
