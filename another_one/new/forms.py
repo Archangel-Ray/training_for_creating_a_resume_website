@@ -69,3 +69,6 @@ class FeedbackForm(ModelForm):
     def __init__(self, *args, **kwargs):
         user = kwargs.pop("user", None)  # пользователя получаем при запросе получить форму в миксине представления
         super().__init__(*args, **kwargs)
+        if user and user.is_authenticated:
+            # убираем поле имени для авторизованных
+            self.fields.pop("author_name", None)
