@@ -30,8 +30,8 @@ class FeedbackListMixin:
         )
 
     def get_feedback_form(self, data=None):
-        """Возвращает форму (пустую или с данными)."""
-        return self.feedback_form_class(data)
+        """Возвращает форму (пустую или с данными). Добавляет пользователя."""
+        return self.feedback_form_class(data, user=self.request.user)
 
     def post(self, request, *args, **kwargs):
         """Обработка отправки отклика."""
@@ -80,8 +80,8 @@ class FeedbackDetailMixin:
         )
 
     def get_feedback_form(self, data=None):
-        """Возвращает форму (пустую или с данными)."""
-        return self.feedback_form_class(data)
+        """Возвращает форму (пустую или с данными). Добавляет пользователя."""
+        return self.feedback_form_class(data, user=self.request.user)
 
     def post(self, request, *args, **kwargs):
         """
