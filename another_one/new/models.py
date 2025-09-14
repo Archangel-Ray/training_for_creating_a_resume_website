@@ -508,12 +508,12 @@ class Feedback(models.Model):
     content = models.TextField("Сообщение")
 
     # универсальная привязка к любому объекту
-    content_type = models.ForeignKey(ContentType, on_delete=models.CASCADE)
-    object_id = models.PositiveIntegerField()
+    content_type = models.ForeignKey(ContentType, on_delete=models.CASCADE, verbose_name="Модель привязки")
+    object_id = models.PositiveIntegerField(verbose_name="Идентификатор объекта")
     target = GenericForeignKey("content_type", "object_id")
 
-    created_at = models.DateTimeField(auto_now_add=True)
-    updated_at = models.DateTimeField(auto_now=True)
+    created_at = models.DateTimeField(auto_now_add=True, verbose_name="Создано")
+    updated_at = models.DateTimeField(auto_now=True, verbose_name="Отредактировано")
 
     status = models.CharField(
         max_length=20,
@@ -523,9 +523,9 @@ class Feedback(models.Model):
             ("hidden", "Скрыто"),
         ],
         default="published",
+        verbose_name="Статус",
     )
 
-    @property
     def display_author(self):
         """
         Универсальное отображение имени автора:
@@ -537,7 +537,11 @@ class Feedback(models.Model):
             return self.author_user.get_full_name_with_patronymic()
         return self.author_name or "пользователь не назвался"
 
+    display_author.short_description = "Автор отклика"
+
     class Meta:
+        verbose_name = "Отклик"
+        verbose_name_plural = "Отклики"
         ordering = ["-created_at"]
 
     def __str__(self):
