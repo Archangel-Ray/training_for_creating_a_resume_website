@@ -525,6 +525,18 @@ class Feedback(models.Model):
         default="published",
     )
 
+    @property
+    def display_author(self):
+        """
+        Универсальное отображение имени автора:
+        - для зарегистрированных пользователей: ФИО или username
+        - для анонимов: введённое имя или "пользователь не назвался".
+        """
+        if self.author_user:
+            # кастомный метод из MyUser
+            return self.author_user.get_full_name_with_patronymic()
+        return self.author_name or "пользователь не назвался"
+
     class Meta:
         ordering = ["-created_at"]
 

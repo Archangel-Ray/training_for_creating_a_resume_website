@@ -10,7 +10,7 @@
 
     {% for fb in feedbacks %}
         <div class="feedback">
-            <strong>{{ fb.author_user.get_full_name_with_patronymic|default:fb.author_name|default:"пользователь не назвался" }}</strong>:
+            <strong>{{ fb.display_author }}</strong>:
             <p>{{ fb.content }}</p>
             <small>{{ fb.created_at }}</small>
         </div>
