@@ -227,7 +227,7 @@ class MyUser(AbstractUser):
         Возвращает полное имя с отчеством (если указано).
         Если ничего нет — fallback на username.
         """
-        parts = [self.last_name, self.first_name, self.patronymic]
+        parts = [self.first_name, self.patronymic, self.last_name]
         full_name = " ".join([p for p in parts if p])  # собираем ФИО
         return full_name.strip() or self.username
 
