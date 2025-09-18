@@ -1,108 +1,83 @@
-from typing import cast
-
 from django.shortcuts import redirect
 from django.contrib.contenttypes.models import ContentType
-from django.views.generic import ListView
 
 from .models import Feedback
 from .forms import FeedbackForm
 
 
-class FeedbackListMixin:
+class FeedbackMixin:
     """
-    Mixin для ListView, чтобы добавить блок откликов ко ВСЕМ объектам списка.
-    Пример: общие отзывы о навыках, проектах и т.д.
-    """
-
-    feedback_model = Feedback
-    feedback_form_class = FeedbackForm
-
-    def get_feedback_content_type(self):
-        """Возвращает ContentType для модели списка (например Skill, Project)."""
-        return ContentType.objects.get_for_model(self.model)
-
-    def get_feedback_queryset(self):
-        """Отзывы без object_id (относятся к разделу в целом)."""
-        return self.feedback_model.objects.filter(
-            content_type=self.get_feedback_content_type(),
-            object_id__isnull=True,
-            status="published"
-        )
-
-    def get_feedback_form(self, data=None):
-        """Возвращает форму (пустую или с данными). Добавляет пользователя."""
-        return self.feedback_form_class(data, user=self.request.user)
-
-    def post(self, request, *args, **kwargs):
-        """Обработка отправки отклика."""
-        self.object_list = self.get_queryset()
-        form = self.get_feedback_form(request.POST)
-
-        if form.is_valid():
-            fb = form.save(commit=False)
-            fb.content_type = self.get_feedback_content_type()
-            fb.object_id = None
-            if request.user.is_authenticated:
-                fb.author_user = request.user
-            fb.save()
-            return redirect(request.path)
-
-        # если форма невалидна → рендерим с ошибками
-        context = self.get_context_data(form=form)
-        return self.render_to_response(context)
-
-    def get_context_data(self, **kwargs):
-        context = super().get_context_data(**kwargs)
-        context["feedbacks"] = self.get_feedback_queryset()
-        context["feedback_form"] = kwargs.get("form", self.get_feedback_form())
-        return context
-
-
-class FeedbackDetailMixin:
-    """
-    Mixin для DetailView: добавляет блок откликов к конкретному объекту
-    (например, к одному навыку, проекту, работе, пользователю и т.д.).
+    Миксин работает и с ListView, и с DetailView. Добавляет
+    блок откликов как к конкретному объекту, так и к спискам.
     """
 
     feedback_model = Feedback
     feedback_form_class = FeedbackForm
 
     def get_feedback_content_type(self):
-        """Возвращает ContentType для конкретного элемента модели."""
-        return ContentType.objects.get_for_model(self.object)
+        """Возвращает номер модели к которой привязан этот объект или модель."""
+        if hasattr(self, "object"):  # если объект, то для DetailView
+            return ContentType.objects.get_for_model(self.object)
+        return ContentType.objects.get_for_model(self.model)  # если не объект, то для ListView
+
+    def get_feedback_object_id(self):
+        """Возвращает идентификатор объекта для DetailView, или None для ListView"""
+        if hasattr(self, "object"):
+            return self.object.id
+        return None
 
     def get_feedback_queryset(self):
-        """Отзывы на конкретный элемент модели по object_id."""
+        """
+        Отбирает и возвращает все отзывы для текущего объекта
+        или раздела соответственно с пометкой "публиковать".
+        """
         return self.feedback_model.objects.filter(
             content_type=self.get_feedback_content_type(),
-            object_id=self.object.id,
+            object_id=self.get_feedback_object_id(),
             status="published",
         )
 
     def get_feedback_form(self, data=None):
-        """Возвращает форму (пустую или с данными). Добавляет пользователя."""
+        """
+        Возвращает форму (пустую или с данными)
+        и текущего пользователя (для идентификации в форме).
+        """
         return self.feedback_form_class(data, user=self.request.user)
 
-    def post(self, request, *args, **kwargs):
+    def handle_valid_form(self, form):
         """
-        Обработка формы откликов для конкретного объекта.
+        Сохранение отзыва.
+        Привязка происходит к текущей модели, в случае если есть идентификатор
+        объекта, то к этому объекту. Если объекта нет, то только к модели.
+        Если пользователь прошёл аутентификацию, то он сохраняется в отклик,
+        иначе сохраняется только имя, если оно было введено.
+        И перегружается страница.
         """
-        self.object = self.get_object()
-        form = self.get_feedback_form(request.POST)
+        fb = form.save(commit=False)
+        fb.content_type = self.get_feedback_content_type()
+        fb.object_id = self.get_feedback_object_id()
+        if self.request.user.is_authenticated:
+            fb.author_user = self.request.user
+        fb.save()
+        return redirect(self.request.path)
 
-        if form.is_valid():
-            fb = form.save(commit=False)
-            fb.content_type = self.get_feedback_content_type()
-            fb.object_id = self.object.id
-            if request.user.is_authenticated:
-                fb.author_user = request.user
-            fb.save()
-            return redirect(request.path)
+    def post(self, request, *args, **kwargs):
+        """Обработка POST-запроса."""
+        if hasattr(self, "get_object"):  # сохраняет объект для DetailView
+            self.object = self.get_object()
+        else:  # сохраняет список для ListView
+            self.object_list = self.get_queryset()
+
+        form = self.get_feedback_form(request.POST)  # получает форму
+
+        if form.is_valid():  # сохраняет отклик, если форма без ошибок
+            return self.handle_valid_form(form)
 
         context = self.get_context_data(form=form)
         return self.render_to_response(context)
 
     def get_context_data(self, **kwargs):
+        """Добавляет в контекст список откликов и форму."""
         context = super().get_context_data(**kwargs)
         context["feedbacks"] = self.get_feedback_queryset()
         context["feedback_form"] = kwargs.get("form", self.get_feedback_form())
