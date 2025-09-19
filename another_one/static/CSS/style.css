@@ -295,3 +295,21 @@ h2 img {
     font-size: 0.8em;
     scrollbar-width: thin;
 }
+
+/* форму откликов по умолчанию скрыта */
+#feedback-form {
+    max-height: 0;
+    overflow: hidden;
+    transition: max-height 0.4s ease-out, padding 0.4s ease-out;
+}
+
+/* когда раскрыта форма откликов */
+#feedback-form.expanded {
+    max-height: 500px; /* выставляем достаточно большое значение */
+}
+
+/* внутри формы откликов у полей ширина меньше */
+.feedback-section input,
+.feedback-section textarea {
+    width: 90%;
+}

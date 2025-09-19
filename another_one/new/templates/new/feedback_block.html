@@ -1,10 +1,21 @@
 <div class="feedback-section">
-    <h4>Оставить отзыв</h4>
-    <form method="post">
-        {% csrf_token %}
-        {{ feedback_form.as_p }}
-        <button type="submit">Отправить</button>
-    </form>
+    <a href="#" id="show-form-link"><h4>Оставить отзыв</h4></a>
+
+    <div id="feedback-form" class="collapsed">
+        <form method="post">
+            {% csrf_token %}
+            {{ feedback_form.as_p }}
+            <button type="submit">Отправить</button>
+        </form>
+    </div>
+
+    <script>
+    document.getElementById("show-form-link").addEventListener("click", function(e) {
+        e.preventDefault();
+        const formBlock = document.getElementById("feedback-form");
+        formBlock.classList.toggle("expanded");
+    });
+    </script>
 
     <h3>Отзывы</h3>
 
