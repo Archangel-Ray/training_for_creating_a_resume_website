@@ -47,9 +47,14 @@ textarea {
     width: 100%;
 }
 
-textarea {
+.edition_table_right textarea {
     resize: none;
     height: 250px;
+    scrollbar-width: thin;
+}
+
+textarea {
+    resize: vertical;
     scrollbar-width: thin;
 }
 
