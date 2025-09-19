@@ -4,6 +4,7 @@ from django.forms import (
     DateInput,
     CheckboxSelectMultiple,
     Textarea,
+    TextInput,
 )
 # from django.forms.widgets import (
 #     FileInput,
@@ -62,7 +63,12 @@ class FeedbackForm(ModelForm):
     class Meta:
         model = Feedback
         fields = ["author_name", "content"]
+        labels = {
+            "author_name": "",
+            "content": "",
+        }
         widgets = {
+            "author_name": TextInput(attrs={"placeholder": "Представьтесь, пожалуйста. Или авторизуйтесь."}),
             "content": Textarea(attrs={"rows": 3, "placeholder": "Что Вы думаете об этом..."}),
         }
 
