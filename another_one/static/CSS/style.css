@@ -296,6 +296,10 @@ h2 img {
     scrollbar-width: thin;
 }
 
+.feedback-section {
+    margin-bottom: 50px;
+}
+
 /* форму откликов по умолчанию скрыта */
 #feedback-form {
     max-height: 0;
@@ -313,4 +317,19 @@ h2 img {
 .feedback-section textarea {
     width: 90%;
     max-height: 420px;
+}
+
+.feedback h4 {
+    display: flex;
+    justify-content: space-between;
+    margin-bottom: 0;
+    border: none;
+    padding: 0 1em;
+}
+
+.feedback p {
+    background: #1224000d;
+    margin: 0;
+    padding: 0.5em 3em;
+    text-align: justify;
 }
