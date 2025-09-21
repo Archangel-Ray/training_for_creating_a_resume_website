@@ -509,7 +509,7 @@ class Feedback(models.Model):
 
     # универсальная привязка к любому объекту
     content_type = models.ForeignKey(ContentType, on_delete=models.CASCADE, verbose_name="Модель привязки")
-    object_id = models.PositiveIntegerField(verbose_name="Идентификатор объекта")
+    object_id = models.PositiveIntegerField(verbose_name="Идентификатор объекта", null=True, blank=True)
     target = GenericForeignKey("content_type", "object_id")
 
     created_at = models.DateTimeField(auto_now_add=True, verbose_name="Создано")
