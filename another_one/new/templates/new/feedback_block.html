@@ -21,11 +21,19 @@
 
     {% for fb in feedbacks %}
         <div class="feedback">
-            <h4>
-                <span>{{ fb.display_author }}</span>
-                <small>{{ fb.created_at }}</small>
-            </h4>
-            {{ fb.content|linebreaks }}
+            {% if fb.author_user.id is 1 %}
+                <h4>
+                    <span>{{ fb.display_author }}</span>
+                    <small>{{ fb.created_at }}</small>
+                </h4>
+            <div class="my_response">{{ fb.content|linebreaks }}</div>
+            {% else %}
+                <h5>
+                    <small>{{ fb.created_at }}</small>
+                    <span>{{ fb.display_author }}</span>
+                </h5>
+                {{ fb.content|linebreaks }}
+            {% endif %}
         </div>
     {% empty %}
         <p>тут ещё нет отзывов. Ваш будет первым.</p>

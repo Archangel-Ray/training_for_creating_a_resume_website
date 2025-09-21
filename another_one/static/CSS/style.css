@@ -319,7 +319,8 @@ h2 img {
     max-height: 420px;
 }
 
-.feedback h4 {
+.feedback h4,
+.feedback h5 {
     display: flex;
     justify-content: space-between;
     margin-bottom: 0;
@@ -332,4 +333,8 @@ h2 img {
     margin: 0;
     padding: 0.5em 3em;
     text-align: justify;
+}
+
+.my_response {
+    text-shadow: 0.05em 0.05em 0.2em #024400d6;
 }
