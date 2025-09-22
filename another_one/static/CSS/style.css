@@ -338,3 +338,12 @@ h2 img {
 .my_response {
     text-shadow: 0.05em 0.05em 0.2em #024400d6;
 }
+
+.feedback a {
+    color: white;
+}
+
+.feedback a:hover {
+    color: #024400d6;
+    text-shadow: none;
+}
