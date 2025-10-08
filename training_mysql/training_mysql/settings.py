@@ -74,8 +74,17 @@ WSGI_APPLICATION = 'training_mysql.wsgi.application'
 
 DATABASES = {
     'default': {
-        'ENGINE': 'django.db.backends.sqlite3',
-        'NAME': BASE_DIR / 'db.sqlite3',
+        # 'ENGINE': 'django.db.backends.sqlite3',
+        # 'NAME': BASE_DIR / 'db.sqlite3',
+        'ENGINE': 'django.db.backends.mysql',
+        'NAME': 'resume',         # название базы данных
+        'USER': 'root',           # имя пользователя MySQL
+        'PASSWORD': '',           # пароль от MySQL
+        'HOST': 'localhost',      # или IP сервера MySQL
+        'PORT': '3306',           # стандартный порт MySQL
+        'OPTIONS': {
+            'init_command': "SET sql_mode='STRICT_TRANS_TABLES'"
+        },
     }
 }
 
