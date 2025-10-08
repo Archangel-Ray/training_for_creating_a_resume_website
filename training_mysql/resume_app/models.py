@@ -4,16 +4,16 @@ from django.db import models
 
 class CountryOfConsignment(models.Model):
     """
-    Модель для списка стран с картинкой государственного флага.
-    Страна будет выбираться пользователем в поле гражданство.
+    РњРѕРґРµР»СЊ РґР»СЏ СЃРїРёСЃРєР° СЃС‚СЂР°РЅ СЃ РєР°СЂС‚РёРЅРєРѕР№ РіРѕСЃСѓРґР°СЂСЃС‚РІРµРЅРЅРѕРіРѕ С„Р»Р°РіР°.
+    РЎС‚СЂР°РЅР° Р±СѓРґРµС‚ РІС‹Р±РёСЂР°С‚СЊСЃСЏ РїРѕР»СЊР·РѕРІР°С‚РµР»РµРј РІ РїРѕР»Рµ РіСЂР°Р¶РґР°РЅСЃС‚РІРѕ.
     """
-    name = models.CharField(max_length=100, unique=True, verbose_name="Название")
-    state_flag = models.ImageField("Государственный флаг", upload_to="flag/", null=True, blank=True)
+    name = models.CharField(max_length=100, unique=True, verbose_name="РќР°Р·РІР°РЅРёРµ")
+    state_flag = models.ImageField("Р“РѕСЃСѓРґР°СЂСЃС‚РІРµРЅРЅС‹Р№ С„Р»Р°Рі", upload_to="flag/", null=True, blank=True)
 
     class Meta:
         ordering = ["name"]
-        verbose_name = "Название страны"
-        verbose_name_plural = "Названия стран"
+        verbose_name = "РќР°Р·РІР°РЅРёРµ СЃС‚СЂР°РЅС‹"
+        verbose_name_plural = "РќР°Р·РІР°РЅРёСЏ СЃС‚СЂР°РЅ"
 
     def __str__(self):
         return self.name
@@ -21,14 +21,14 @@ class CountryOfConsignment(models.Model):
 
 class City(models.Model):
     """
-    Модель для списка городов. Город будет выбираться пользователем.
+    РњРѕРґРµР»СЊ РґР»СЏ СЃРїРёСЃРєР° РіРѕСЂРѕРґРѕРІ. Р“РѕСЂРѕРґ Р±СѓРґРµС‚ РІС‹Р±РёСЂР°С‚СЊСЃСЏ РїРѕР»СЊР·РѕРІР°С‚РµР»РµРј.
     """
-    name = models.CharField(max_length=100, unique=True, verbose_name="Название")
+    name = models.CharField(max_length=100, unique=True, verbose_name="РќР°Р·РІР°РЅРёРµ")
 
     class Meta:
         ordering = ["name"]
-        verbose_name = "Название города"
-        verbose_name_plural = "Названия городов"
+        verbose_name = "РќР°Р·РІР°РЅРёРµ РіРѕСЂРѕРґР°"
+        verbose_name_plural = "РќР°Р·РІР°РЅРёСЏ РіРѕСЂРѕРґРѕРІ"
 
     def __str__(self):
         return self.name
@@ -36,16 +36,16 @@ class City(models.Model):
 
 class SupplementProfession(models.Model):
     """
-    Специализации профессий.
-    Модель недоработана. Необходимо сделать так чтоб пользователь мог выбрать несколько специализаций
-    определённой профессии. Специализации должны отображаться соответственно выбранной профессии.
+    РЎРїРµС†РёР°Р»РёР·Р°С†РёРё РїСЂРѕС„РµСЃСЃРёР№.
+    РњРѕРґРµР»СЊ РЅРµРґРѕСЂР°Р±РѕС‚Р°РЅР°. РќРµРѕР±С…РѕРґРёРјРѕ СЃРґРµР»Р°С‚СЊ С‚Р°Рє С‡С‚РѕР± РїРѕР»СЊР·РѕРІР°С‚РµР»СЊ РјРѕРі РІС‹Р±СЂР°С‚СЊ РЅРµСЃРєРѕР»СЊРєРѕ СЃРїРµС†РёР°Р»РёР·Р°С†РёР№
+    РѕРїСЂРµРґРµР»С‘РЅРЅРѕР№ РїСЂРѕС„РµСЃСЃРёРё. РЎРїРµС†РёР°Р»РёР·Р°С†РёРё РґРѕР»Р¶РЅС‹ РѕС‚РѕР±СЂР°Р¶Р°С‚СЊСЃСЏ СЃРѕРѕС‚РІРµС‚СЃС‚РІРµРЅРЅРѕ РІС‹Р±СЂР°РЅРЅРѕР№ РїСЂРѕС„РµСЃСЃРёРё.
     """
-    name = models.CharField(max_length=100, unique=True, verbose_name="Наименование")
+    name = models.CharField(max_length=100, unique=True, verbose_name="РќР°РёРјРµРЅРѕРІР°РЅРёРµ")
 
     class Meta:
         ordering = ["name"]
-        verbose_name = "Специализация"
-        verbose_name_plural = "Специализации"
+        verbose_name = "РЎРїРµС†РёР°Р»РёР·Р°С†РёСЏ"
+        verbose_name_plural = "РЎРїРµС†РёР°Р»РёР·Р°С†РёРё"
 
     def __str__(self):
         return self.name
@@ -53,10 +53,10 @@ class SupplementProfession(models.Model):
 
 class Profession(models.Model):
     """
-    Модель для списка профессий. К профессии можно прикрепить несколько специализаций.
-    Профессия будет выбираться пользователем.
+    РњРѕРґРµР»СЊ РґР»СЏ СЃРїРёСЃРєР° РїСЂРѕС„РµСЃСЃРёР№. Рљ РїСЂРѕС„РµСЃСЃРёРё РјРѕР¶РЅРѕ РїСЂРёРєСЂРµРїРёС‚СЊ РЅРµСЃРєРѕР»СЊРєРѕ СЃРїРµС†РёР°Р»РёР·Р°С†РёР№.
+    РџСЂРѕС„РµСЃСЃРёСЏ Р±СѓРґРµС‚ РІС‹Р±РёСЂР°С‚СЊСЃСЏ РїРѕР»СЊР·РѕРІР°С‚РµР»РµРј.
     """
-    name = models.CharField(max_length=100, unique=True, verbose_name="Название")
+    name = models.CharField(max_length=100, unique=True, verbose_name="РќР°Р·РІР°РЅРёРµ")
     supplement_the_profession_of_the_user = models.ManyToManyField(
         SupplementProfession,
         related_name="supplement_profession"
@@ -64,8 +64,8 @@ class Profession(models.Model):
 
     class Meta:
         ordering = ["name"]
-        verbose_name = "Профессия"
-        verbose_name_plural = "Профессии"
+        verbose_name = "РџСЂРѕС„РµСЃСЃРёСЏ"
+        verbose_name_plural = "РџСЂРѕС„РµСЃСЃРёРё"
 
     def __str__(self):
         return self.name
@@ -73,17 +73,17 @@ class Profession(models.Model):
 
 class Organization(models.Model):
     """
-    Модель для списка организаций в которой работает пользователь.
-    Организация имеет название и город месторасположения.
-    ... Надо подумать, делать ли связь с полем "текущее место" работы в моём резюме.
+    РњРѕРґРµР»СЊ РґР»СЏ СЃРїРёСЃРєР° РѕСЂРіР°РЅРёР·Р°С†РёР№ РІ РєРѕС‚РѕСЂРѕР№ СЂР°Р±РѕС‚Р°РµС‚ РїРѕР»СЊР·РѕРІР°С‚РµР»СЊ.
+    РћСЂРіР°РЅРёР·Р°С†РёСЏ РёРјРµРµС‚ РЅР°Р·РІР°РЅРёРµ Рё РіРѕСЂРѕРґ РјРµСЃС‚РѕСЂР°СЃРїРѕР»РѕР¶РµРЅРёСЏ.
+    ... РќР°РґРѕ РїРѕРґСѓРјР°С‚СЊ, РґРµР»Р°С‚СЊ Р»Рё СЃРІСЏР·СЊ СЃ РїРѕР»РµРј "С‚РµРєСѓС‰РµРµ РјРµСЃС‚Рѕ" СЂР°Р±РѕС‚С‹ РІ РјРѕС‘Рј СЂРµР·СЋРјРµ.
     """
-    name = models.CharField(max_length=100, unique=True, verbose_name="Название")
-    city = models.ForeignKey(City, on_delete=models.SET_NULL, null=True, blank=True, verbose_name="Город")
+    name = models.CharField(max_length=100, unique=True, verbose_name="РќР°Р·РІР°РЅРёРµ")
+    city = models.ForeignKey(City, on_delete=models.SET_NULL, null=True, blank=True, verbose_name="Р“РѕСЂРѕРґ")
 
     class Meta:
         ordering = ["name"]
-        verbose_name = "Организация"
-        verbose_name_plural = "Организации"
+        verbose_name = "РћСЂРіР°РЅРёР·Р°С†РёСЏ"
+        verbose_name_plural = "РћСЂРіР°РЅРёР·Р°С†РёРё"
 
     def __str__(self):
         return self.name
@@ -91,31 +91,31 @@ class Organization(models.Model):
 
 class Language(models.Model):
     """
-    Модель для списка иностранных языков. Для определения знания языков пользователем.
-    ... Надо подумать. Как сделать так чтоб был список без определения уровня.
-    ... а уровень давался выбранному языку у каждого пользователя.
+    РњРѕРґРµР»СЊ РґР»СЏ СЃРїРёСЃРєР° РёРЅРѕСЃС‚СЂР°РЅРЅС‹С… СЏР·С‹РєРѕРІ. Р”Р»СЏ РѕРїСЂРµРґРµР»РµРЅРёСЏ Р·РЅР°РЅРёСЏ СЏР·С‹РєРѕРІ РїРѕР»СЊР·РѕРІР°С‚РµР»РµРј.
+    ... РќР°РґРѕ РїРѕРґСѓРјР°С‚СЊ. РљР°Рє СЃРґРµР»Р°С‚СЊ С‚Р°Рє С‡С‚РѕР± Р±С‹Р» СЃРїРёСЃРѕРє Р±РµР· РѕРїСЂРµРґРµР»РµРЅРёСЏ СѓСЂРѕРІРЅСЏ.
+    ... Р° СѓСЂРѕРІРµРЅСЊ РґР°РІР°Р»СЃСЏ РІС‹Р±СЂР°РЅРЅРѕРјСѓ СЏР·С‹РєСѓ Сѓ РєР°Р¶РґРѕРіРѕ РїРѕР»СЊР·РѕРІР°С‚РµР»СЏ.
     """
     LANGUAGE_LEVEL = {
-        "A1": "начальный",
-        "A2": "элементарный",
-        "B1": "средний",
-        "B2": "выше среднего",
-        "C1": "продвинутый",
-        "C2": "профессиональный",
+        "A1": "РЅР°С‡Р°Р»СЊРЅС‹Р№",
+        "A2": "СЌР»РµРјРµРЅС‚Р°СЂРЅС‹Р№",
+        "B1": "СЃСЂРµРґРЅРёР№",
+        "B2": "РІС‹С€Рµ СЃСЂРµРґРЅРµРіРѕ",
+        "C1": "РїСЂРѕРґРІРёРЅСѓС‚С‹Р№",
+        "C2": "РїСЂРѕС„РµСЃСЃРёРѕРЅР°Р»СЊРЅС‹Р№",
     }
 
-    name = models.CharField(max_length=100, verbose_name="Язык")
+    name = models.CharField(max_length=100, verbose_name="РЇР·С‹Рє")
     level = models.CharField(
         max_length=2,
         choices=LANGUAGE_LEVEL,
-        verbose_name="уровень",
+        verbose_name="СѓСЂРѕРІРµРЅСЊ",
         default="A1"
     )
 
     class Meta:
         ordering = ["name"]
-        verbose_name = "Иностранный язык"
-        verbose_name_plural = "Иностранные языки"
+        verbose_name = "РРЅРѕСЃС‚СЂР°РЅРЅС‹Р№ СЏР·С‹Рє"
+        verbose_name_plural = "РРЅРѕСЃС‚СЂР°РЅРЅС‹Рµ СЏР·С‹РєРё"
 
     def __str__(self):
         return f"{self.name}({self.level})"
@@ -123,49 +123,49 @@ class Language(models.Model):
 
 class MyUser(AbstractUser):
     """
-    Расширенная модель пользователя.
-    Дополнена полями для хранения личной, профессиональной и контактной информации:
-        - Личные данные:
-            * photo — фотография пользователя.
-            * biological_sex — пол (женский, мужской).
-            * patronymic — отчество.
-            * birthday — дата рождения.
-            * citizenship — гражданство (связь с моделью CountryOfConsignment).
-            * city — город проживания (связь с моделью City).
-        - Профессиональная информация:
-            * profession — основная профессия (связь с моделью Profession).
-            * specialization_professions — дополнительные специализации (M2M с SupplementProfession).
-            * the_level_of_professionalism — уровень профессионализма (от "ученик" до "супер-профессионал").
-            * job — текущее место работы (связь с моделью Organization).
-        - Языковые компетенции:
-            * languages — знание иностранных языков (M2M с моделью Language).
-        - Персональное описание:
-            * motto — личный девиз.
-            * about_me — свободное текстовое описание "Обо мне".
+    Р Р°СЃС€РёСЂРµРЅРЅР°СЏ РјРѕРґРµР»СЊ РїРѕР»СЊР·РѕРІР°С‚РµР»СЏ.
+    Р”РѕРїРѕР»РЅРµРЅР° РїРѕР»СЏРјРё РґР»СЏ С…СЂР°РЅРµРЅРёСЏ Р»РёС‡РЅРѕР№, РїСЂРѕС„РµСЃСЃРёРѕРЅР°Р»СЊРЅРѕР№ Рё РєРѕРЅС‚Р°РєС‚РЅРѕР№ РёРЅС„РѕСЂРјР°С†РёРё:
+        - Р›РёС‡РЅС‹Рµ РґР°РЅРЅС‹Рµ:
+            * photo вЂ” С„РѕС‚РѕРіСЂР°С„РёСЏ РїРѕР»СЊР·РѕРІР°С‚РµР»СЏ.
+            * biological_sex вЂ” РїРѕР» (Р¶РµРЅСЃРєРёР№, РјСѓР¶СЃРєРѕР№).
+            * patronymic вЂ” РѕС‚С‡РµСЃС‚РІРѕ.
+            * birthday вЂ” РґР°С‚Р° СЂРѕР¶РґРµРЅРёСЏ.
+            * citizenship вЂ” РіСЂР°Р¶РґР°РЅСЃС‚РІРѕ (СЃРІСЏР·СЊ СЃ РјРѕРґРµР»СЊСЋ CountryOfConsignment).
+            * city вЂ” РіРѕСЂРѕРґ РїСЂРѕР¶РёРІР°РЅРёСЏ (СЃРІСЏР·СЊ СЃ РјРѕРґРµР»СЊСЋ City).
+        - РџСЂРѕС„РµСЃСЃРёРѕРЅР°Р»СЊРЅР°СЏ РёРЅС„РѕСЂРјР°С†РёСЏ:
+            * profession вЂ” РѕСЃРЅРѕРІРЅР°СЏ РїСЂРѕС„РµСЃСЃРёСЏ (СЃРІСЏР·СЊ СЃ РјРѕРґРµР»СЊСЋ Profession).
+            * specialization_professions вЂ” РґРѕРїРѕР»РЅРёС‚РµР»СЊРЅС‹Рµ СЃРїРµС†РёР°Р»РёР·Р°С†РёРё (M2M СЃ SupplementProfession).
+            * the_level_of_professionalism вЂ” СѓСЂРѕРІРµРЅСЊ РїСЂРѕС„РµСЃСЃРёРѕРЅР°Р»РёР·РјР° (РѕС‚ "СѓС‡РµРЅРёРє" РґРѕ "СЃСѓРїРµСЂ-РїСЂРѕС„РµСЃСЃРёРѕРЅР°Р»").
+            * job вЂ” С‚РµРєСѓС‰РµРµ РјРµСЃС‚Рѕ СЂР°Р±РѕС‚С‹ (СЃРІСЏР·СЊ СЃ РјРѕРґРµР»СЊСЋ Organization).
+        - РЇР·С‹РєРѕРІС‹Рµ РєРѕРјРїРµС‚РµРЅС†РёРё:
+            * languages вЂ” Р·РЅР°РЅРёРµ РёРЅРѕСЃС‚СЂР°РЅРЅС‹С… СЏР·С‹РєРѕРІ (M2M СЃ РјРѕРґРµР»СЊСЋ Language).
+        - РџРµСЂСЃРѕРЅР°Р»СЊРЅРѕРµ РѕРїРёСЃР°РЅРёРµ:
+            * motto вЂ” Р»РёС‡РЅС‹Р№ РґРµРІРёР·.
+            * about_me вЂ” СЃРІРѕР±РѕРґРЅРѕРµ С‚РµРєСЃС‚РѕРІРѕРµ РѕРїРёСЃР°РЅРёРµ "РћР±Рѕ РјРЅРµ".
 
-    Константы:
-        PROFESSIONAL_LEVELS — справочник уровней профессионализма.
-        BIOLOGICAL_SEX — справочник полов.
+    РљРѕРЅСЃС‚Р°РЅС‚С‹:
+        PROFESSIONAL_LEVELS вЂ” СЃРїСЂР°РІРѕС‡РЅРёРє СѓСЂРѕРІРЅРµР№ РїСЂРѕС„РµСЃСЃРёРѕРЅР°Р»РёР·РјР°.
+        BIOLOGICAL_SEX вЂ” СЃРїСЂР°РІРѕС‡РЅРёРє РїРѕР»РѕРІ.
     """
     PROFESSIONAL_LEVELS = {
-        "": "— Нет никакого —",
-        "LR": "ученик",
-        "BR": "начинающий",
-        "LL": "небольшой опыт",
-        "EX": "опыт есть",
-        "PR": "профессионал",
-        "SP": "супер-профессионал",
-        "HB": "хобби",
+        "": "вЂ” РќРµС‚ РЅРёРєР°РєРѕРіРѕ вЂ”",
+        "LR": "СѓС‡РµРЅРёРє",
+        "BR": "РЅР°С‡РёРЅР°СЋС‰РёР№",
+        "LL": "РЅРµР±РѕР»СЊС€РѕР№ РѕРїС‹С‚",
+        "EX": "РѕРїС‹С‚ РµСЃС‚СЊ",
+        "PR": "РїСЂРѕС„РµСЃСЃРёРѕРЅР°Р»",
+        "SP": "СЃСѓРїРµСЂ-РїСЂРѕС„РµСЃСЃРёРѕРЅР°Р»",
+        "HB": "С…РѕР±Р±Рё",
     }
 
     BIOLOGICAL_SEX = {
-        "": "— Не выбран —",
-        "F": "женский",
-        "M": "мужской"
+        "": "вЂ” РќРµ РІС‹Р±СЂР°РЅ вЂ”",
+        "F": "Р¶РµРЅСЃРєРёР№",
+        "M": "РјСѓР¶СЃРєРѕР№"
     }
 
     photo = models.ImageField(
-        "Собственное изображение",
+        "РЎРѕР±СЃС‚РІРµРЅРЅРѕРµ РёР·РѕР±СЂР°Р¶РµРЅРёРµ",
         upload_to="user_s_photo/",
         null=True,
         blank=True,
@@ -175,51 +175,51 @@ class MyUser(AbstractUser):
         choices=BIOLOGICAL_SEX,
         null=True,
         blank=True,
-        verbose_name="Пол",
+        verbose_name="РџРѕР»",
     )
-    patronymic = models.CharField(max_length=100, verbose_name="Отчество", null=True, blank=True)
-    birthday = models.DateField(null=True, blank=True, verbose_name="День рождения")
+    patronymic = models.CharField(max_length=100, verbose_name="РћС‚С‡РµСЃС‚РІРѕ", null=True, blank=True)
+    birthday = models.DateField(null=True, blank=True, verbose_name="Р”РµРЅСЊ СЂРѕР¶РґРµРЅРёСЏ")
     citizenship = models.ForeignKey(
-        CountryOfConsignment, on_delete=models.SET_NULL, null=True, blank=True, verbose_name="Гражданство"
+        CountryOfConsignment, on_delete=models.SET_NULL, null=True, blank=True, verbose_name="Р“СЂР°Р¶РґР°РЅСЃС‚РІРѕ"
     )
-    city = models.ForeignKey(City, on_delete=models.SET_NULL, null=True, blank=True, verbose_name="Город")
+    city = models.ForeignKey(City, on_delete=models.SET_NULL, null=True, blank=True, verbose_name="Р“РѕСЂРѕРґ")
     profession = models.ForeignKey(
-        Profession, on_delete=models.SET_NULL, null=True, blank=True, verbose_name="Профессия"
+        Profession, on_delete=models.SET_NULL, null=True, blank=True, verbose_name="РџСЂРѕС„РµСЃСЃРёСЏ"
     )
     specialization_professions = models.ManyToManyField(
         SupplementProfession,
         blank=True,
         related_name="supplement_user",
-        verbose_name="Специализация",
+        verbose_name="РЎРїРµС†РёР°Р»РёР·Р°С†РёСЏ",
     )
     the_level_of_professionalism = models.CharField(
         max_length=2,
         choices=PROFESSIONAL_LEVELS,
         null=True,
         blank=True,
-        verbose_name="Уровень профессионализма",
+        verbose_name="РЈСЂРѕРІРµРЅСЊ РїСЂРѕС„РµСЃСЃРёРѕРЅР°Р»РёР·РјР°",
     )
     job = models.ForeignKey(
         Organization,
         on_delete=models.SET_NULL,
         null=True,
         blank=True,
-        verbose_name="Текущее место работы",
+        verbose_name="РўРµРєСѓС‰РµРµ РјРµСЃС‚Рѕ СЂР°Р±РѕС‚С‹",
     )
     languages = models.ManyToManyField(
         Language,
         blank=True,
         related_name="knowledge_of_foreign_languages",
-        verbose_name="Знание языков",
+        verbose_name="Р—РЅР°РЅРёРµ СЏР·С‹РєРѕРІ",
     )
-    motto = models.CharField(max_length=1000, verbose_name="Мой девиз", null=True, blank=True)
-    about_me = models.TextField(verbose_name="Обо мне", null=True, blank=True)
+    motto = models.CharField(max_length=1000, verbose_name="РњРѕР№ РґРµРІРёР·", null=True, blank=True)
+    about_me = models.TextField(verbose_name="РћР±Рѕ РјРЅРµ", null=True, blank=True)
 
     def get_full_name_with_patronymic(self):
         """
-        Возвращает полное имя с отчеством (если указано).
-        Если ничего нет — fallback на username.
+        Р’РѕР·РІСЂР°С‰Р°РµС‚ РїРѕР»РЅРѕРµ РёРјСЏ СЃ РѕС‚С‡РµСЃС‚РІРѕРј (РµСЃР»Рё СѓРєР°Р·Р°РЅРѕ).
+        Р•СЃР»Рё РЅРёС‡РµРіРѕ РЅРµС‚ вЂ” fallback РЅР° username.
         """
         parts = [self.first_name, self.patronymic, self.last_name]
-        full_name = " ".join([p for p in parts if p])  # собираем ФИО
+        full_name = " ".join([p for p in parts if p])  # СЃРѕР±РёСЂР°РµРј Р¤РРћ
         return full_name.strip() or self.username
