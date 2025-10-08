@@ -37,6 +37,9 @@ INSTALLED_APPS = [
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
+
+    # приложения проекта
+    'resume_app.apps.ResumeAppConfig',
 ]
 
 MIDDLEWARE = [
